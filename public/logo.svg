@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Purple to Cyan linear gradient -->
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <!-- Drop Shadow Filter for glow effect -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#06b6d4" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Glowing rounded backdrop -->
+  <rect x="10" y="10" width="80" height="80" rx="20" fill="url(#logoGrad)" filter="url(#glow)" />
+
+  <!-- Center Letter 'M' -->
+  <path d="M 28 68 L 28 32 L 42 52 L 50 42 L 58 52 L 72 32 L 72 68" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+</svg>

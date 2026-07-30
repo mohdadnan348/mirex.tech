@@ -1,0 +1,200 @@
+export const translations: Record<string, any> = {
+  en: {
+    nav: {
+      home: "Home",
+      about: "About Us",
+      services: "Services",
+      projects: "Projects",
+      pricing: "Pricing",
+      blog: "Blog",
+      careers: "Careers",
+      contact: "Contact",
+      admin: "Admin CMS",
+      consultation: "Free Consultation"
+    },
+    hero: {
+      sub: "MIREX TECHNOLOGY GROUP",
+      title: "We Build AI-Powered Software That Grows Businesses.",
+      desc: "From custom websites to advanced AI automation, we transform your digital ideas into scalable, high-performance products.",
+      ctaConsultation: "Get Free Consultation",
+      ctaPortfolio: "View Portfolio"
+    },
+    trusted: "TRUSTED TECHNOLOGIES & TOOLS",
+    stats: {
+      delivery: "Fast Delivery",
+      deliveryDesc: "Agile methodology & 2-week sprint releases",
+      uptime: "99.9% Uptime",
+      uptimeDesc: "Robust cloud architecture on Vercel & AWS",
+      ui: "Modern UI/UX",
+      uiDesc: "Apple & Vercel-inspired glassmorphism designs",
+      security: "Secure Development",
+      securityDesc: "JWT, RBAC, HTTPS, and strong encryption out of the box",
+      pricing: "Affordable Plans",
+      pricingDesc: "Premium quality customized to your budget",
+      support: "24/7 Support",
+      supportDesc: "Direct WhatsApp and email channels anytime"
+    },
+    pricing: {
+      title: "Flexible Pricing Plans",
+      subtitle: "Tailored options built to fit every business scale",
+      starter: "Starter Plan",
+      business: "Business Plan",
+      enterprise: "Enterprise Plan",
+      custom: "Custom Quote",
+      starterDesc: "For small businesses starting their SMM & web journey",
+      businessDesc: "For growing brands needing continuous software updates",
+      enterpriseDesc: "For corporate brands looking for full-scale AI and SEO boosts",
+      customDesc: "For complex software and AI automation projects",
+      request: "Request Custom Quote",
+      choose: "Get Started"
+    },
+    process: {
+      title: "Our Proven Development Process",
+      subtitle: "How we bring your custom solutions to life",
+      step1: "Discovery",
+      step1Desc: "Deep research into goals, competitors, and client target audience.",
+      step2: "Planning",
+      step2Desc: "Setting project timelines, product features, and modern tech stack.",
+      step3: "UI Design",
+      step3Desc: "Designing stunning mockups in Figma with user-centered UX flows.",
+      step4: "Development",
+      step4Desc: "Writing clean, standard frontend, backend, APIs, and AI nodes.",
+      step5: "Testing",
+      step5Desc: "QA testing, performance profiling, and security audits.",
+      step6: "Deployment",
+      step6Desc: "Launching on Vercel, AWS, or your preferred custom clouds.",
+      step7: "Support",
+      step7Desc: "Constant post-launch improvements, monitoring, and updates."
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      subtitle: "Common questions about our services and policies",
+      q1: "How long does a website take to build?",
+      a1: "A basic website takes 2-3 weeks. A complex ERP or custom AI application usually takes 4-8 weeks depending on requirements.",
+      q2: "Do you provide post-launch maintenance?",
+      a2: "Yes! We offer monthly maintenance, updates, backups, security patches, and cloud monitoring packages.",
+      q3: "Can you manage our social media and ads?",
+      a3: "Absolutely. We offer complete SMM packages, content creation, Meta ads, Google ads, and SEO optimization.",
+      q4: "Do I get full ownership of the source code?",
+      a4: "Yes, 100%. Once projects are completed, we transfer the full intellectual property rights and code repositories to you."
+    },
+    contact: {
+      title: "Let's Build Something Amazing Together",
+      subtitle: "Get in touch with our team or schedule a meeting directly",
+      name: "Your Name",
+      email: "Your Email Address",
+      subject: "Subject",
+      message: "Your Message",
+      send: "Send Message",
+      whatsapp: "Chat on WhatsApp",
+      call: "Call Us Now",
+      meeting: "Book Free Consultation Call",
+      success: "Thank you! Your message has been sent successfully.",
+      error: "Something went wrong. Please try again."
+    },
+    aiBot: {
+      welcome: "Hi! I am Mirex AI. How can I help you scale your business today?",
+      placeholder: "Ask about pricing, services, or projects...",
+      send: "Send"
+    }
+  },
+  hi: {
+    nav: {
+      home: "मुख्य पृष्ठ",
+      about: "हमारे बारे में",
+      services: "सेवाएं",
+      projects: "पोर्टफोलियो",
+      pricing: "मूल्य निर्धारण",
+      blog: "ब्लॉग",
+      careers: "करियर",
+      contact: "संपर्क करें",
+      admin: "एडमिन पैनल",
+      consultation: "मुफ्त सलाह"
+    },
+    hero: {
+      sub: "माइरेक्स टेक्नोलॉजी ग्रुप",
+      title: "हम एआई-संचालित सॉफ़्टवेयर बनाते हैं जो व्यवसाय को बढ़ाता है।",
+      desc: "कस्टम वेबसाइटों से लेकर उन्नत एआई ऑटोमेशन तक, हम आपके विचारों को स्केलेबल और उच्च प्रदर्शन वाले डिजिटल उत्पादों में बदलते हैं।",
+      ctaConsultation: "मुफ्त परामर्श प्राप्त करें",
+      ctaPortfolio: "पोर्टफोलियो देखें"
+    },
+    trusted: "विश्वसनीय तकनीकें और उपकरण",
+    stats: {
+      delivery: "तेज़ डिलीवरी",
+      deliveryDesc: "एजाइल कार्यप्रणाली और हर 2 सप्ताह में रिलीज",
+      uptime: "99.9% अपटाइम",
+      uptimeDesc: "Vercel और AWS पर मजबूत क्लाउड आर्किटेक्चर",
+      ui: "आधुनिक UI/UX",
+      uiDesc: "Apple और Vercel से प्रेरित ग्लासमोर्फिज्म डिजाइन",
+      security: "सुरक्षित विकास",
+      securityDesc: "JWT, RBAC, HTTPS और मजबूत डेटा एन्क्रिप्शन",
+      pricing: "किफायती योजनाएं",
+      pricingDesc: "आपके बजट के अनुसार प्रीमियम गुणवत्ता",
+      support: "24/7 सहायता",
+      supportDesc: "व्हाट्सएप और ईमेल पर सीधी सहायता उपलब्ध"
+    },
+    pricing: {
+      title: "लचीली मूल्य निर्धारण योजनाएं",
+      subtitle: "हर व्यवसाय के आकार के अनुरूप बनाए गए विकल्प",
+      starter: "स्टार्टर प्लान",
+      business: "बिजनेस प्लान",
+      enterprise: "एंटरप्राइज प्लान",
+      custom: "कस्टम कोट",
+      starterDesc: "SMM और वेब यात्रा शुरू करने वाले छोटे व्यवसायों के लिए",
+      businessDesc: "बढ़ते ब्रांडों के लिए जिन्हें नियमित सॉफ़्टवेयर अपडेट चाहिए",
+      enterpriseDesc: "एआई और एसईओ बूस्ट चाहने वाले कॉर्पोरेट ब्रांडों के लिए",
+      customDesc: "जटिल सॉफ़्टवेयर और एआई ऑटोमेशन परियोजनाओं के लिए",
+      request: "कस्टम कोट का अनुरोध करें",
+      choose: "शुरू करें"
+    },
+    process: {
+      title: "हमारी सिद्ध विकास प्रक्रिया",
+      subtitle: "हम आपके कस्टम समाधानों को कैसे जीवंत बनाते हैं",
+      step1: "खोज (Discovery)",
+      step1Desc: "लक्ष्यों, प्रतिस्पर्धियों और लक्षित दर्शकों पर गहन शोध।",
+      step2: "योजना (Planning)",
+      step2Desc: "प्रोजेक्ट समयसीमा, उत्पाद सुविधाओं और आधुनिक टेक स्टैक का निर्धारण।",
+      step3: "डिजाइन (UI Design)",
+      step3Desc: "फिग्मा में उपयोगकर्ता-केंद्रित यूजर फ्लो के साथ आश्चर्यजनक डिजाइन।",
+      step4: "विकास (Development)",
+      step4Desc: "स्वच्छ, मानक फ्रंटेंड, बैकेंड, एपीआई और एआई कोड लिखना।",
+      step5: "परीक्षण (Testing)",
+      step5Desc: "गुणवत्ता परीक्षण, प्रदर्शन प्रोफाइलिंग और सुरक्षा ऑडिट।",
+      step6: "परिनियोजन (Deployment)",
+      step6Desc: "Vercel, AWS या आपके पसंदीदा क्लाउड सर्वर पर लाइव लॉन्च।",
+      step7: "सहायता (Support)",
+      step7Desc: "लांच के बाद निरंतर सुधार, निगरानी और अपडेट।"
+    },
+    faq: {
+      title: "अक्सर पूछे जाने वाले प्रश्न",
+      subtitle: "हमारी सेवाओं और नीतियों के बारे में सामान्य प्रश्न",
+      q1: "वेबसाइट बनाने में कितना समय लगता है?",
+      a1: "एक बुनियादी वेबसाइट में 2-3 सप्ताह लगते हैं। एक जटिल ERP या कस्टम AI एप्लिकेशन में आमतौर पर आवश्यकताओं के आधार पर 4-8 सप्ताह लगते हैं।",
+      q2: "क्या आप लॉन्च के बाद रखरखाव प्रदान करते हैं?",
+      a2: "हाँ! हम मासिक रखरखाव, अपडेट, बैकअप, सुरक्षा पैच और क्लाउड मॉनिटरिंग पैकेज प्रदान करते हैं।",
+      q3: "क्या आप हमारे सोशल मीडिया और विज्ञापनों का प्रबंधन कर सकते हैं?",
+      a3: "बिल्कुल। हम संपूर्ण SMM पैकेज, सामग्री निर्माण, मेटा विज्ञापन, Google विज्ञापन और SEO अनुकूलन प्रदान करते हैं।",
+      q4: "क्या मुझे स्रोत कोड का पूरा मालिकाना हक मिलेगा?",
+      a4: "हाँ, 100%. परियोजनाएं पूरी होने पर, हम आपको पूर्ण बौद्धिक संपदा अधिकार और कोड रिपॉजिटरी स्थानांतरित करते हैं।"
+    },
+    contact: {
+      title: "चलो साथ मिलकर कुछ अद्भुत बनाते हैं",
+      subtitle: "हमारी टीम से संपर्क करें या सीधे मीटिंग शेड्यूल करें",
+      name: "आपका नाम",
+      email: "आपका ईमेल पता",
+      subject: "विषय",
+      message: "आपका संदेश",
+      send: "संदेश भेजें",
+      whatsapp: "व्हाट्सएप पर चैट करें",
+      call: "अभी कॉल करें",
+      meeting: "फ्री परामर्श कॉल बुक करें",
+      success: "धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है।",
+      error: "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
+    },
+    aiBot: {
+      welcome: "नमस्ते! मैं माइरेक्स एआई हूँ। मैं आज आपके व्यवसाय को बढ़ाने में कैसे मदद कर सकता हूँ?",
+      placeholder: "कीमत, सेवाओं या प्रोजेक्ट्स के बारे में पूछें...",
+      send: "भेजें"
+    }
+  }
+};
