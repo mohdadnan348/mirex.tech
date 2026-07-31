@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
-import "@/app/globals.css";
+import "./globals.css";
 import Providers from "@/app/providers";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -9,6 +9,8 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import CursorGlow from "@/components/ui/CursorGlow";
 import CookieConsent from "@/components/ui/CookieConsent";
 import AnimatedBackground from "@/components/animations/AnimatedBackground";
+
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,10 +24,22 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "MirexTech | AI-Powered Software & Web Agency",
-  description: "MirexTech builds modern websites, cross-platform mobile apps, custom AI Chatbots (RAG), and ERP/CRM systems with high performance and Vercel/Apple inspired designs.",
-  keywords: "Web Development, AI Automation, SMM, Mobile Apps, Next.js, React Native, DeepSeek AI, ERP, CRM, Kanpur, Delhi, Noida",
-  authors: [{ name: "Mohd Adnan", url: "https://mirextech.in" }],
-  viewport: "width=device-width, initial-scale=1.0",
+  description:
+    "MirexTech builds modern websites, cross-platform mobile apps, custom AI Chatbots (RAG), and ERP/CRM systems with high performance and Vercel/Apple inspired designs.",
+  keywords:
+    "Web Development, AI Automation, SMM, Mobile Apps, Next.js, React Native, DeepSeek AI, ERP, CRM, Kanpur, Delhi, Noida",
+  authors: [
+    {
+      name: "Mohd Adnan",
+      url: "https://mirextech.in",
+    },
+  ],
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -39,19 +53,19 @@ export default function RootLayout({
         <Providers>
           {/* Cursor Glow mouse tracking layer */}
           <CursorGlow />
-          
+
           {/* Neon animated mesh backdrop */}
           <AnimatedBackground />
-          
+
           {/* Header navigation bar */}
           <Navbar />
-          
+
           {/* Page contents */}
           <main className="flex-grow">{children}</main>
-          
+
           {/* Footers */}
           <Footer />
-          
+
           {/* Floating UI overlays */}
           <AIAssistant />
           <WhatsAppButton />
