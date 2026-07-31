@@ -24,8 +24,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass border-b border-white/10' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-background/95 border-b border-border' 
+          : 'bg-background border-b border-border'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
@@ -66,9 +68,9 @@ export function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+          className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -84,7 +86,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden glass border-b border-white/10"
+            className="md:hidden border-b border-border bg-background"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -101,7 +103,7 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+              <div className="flex items-center gap-4 pt-4 border-t border-border">
                 <ThemeToggle />
                 <Link to="/contact" className="flex-1" onClick={() => setIsOpen(false)}>
                   <AnimatedButton size="sm" className="w-full">

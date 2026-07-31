@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { AnimatedButton } from '@/components/ui/AnimatedButton';
 import { OrbAnimation } from '@/components/animations/OrbAnimation';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -8,8 +9,25 @@ import { texts } from '@/data/translationData';
 export default function Hero() {
   const { hero } = texts;
 
+  // Responsive orb size based on screen width
+  const [orbSize, setOrbSize] = useState(380);
+
+  useEffect(() => {
+    const updateOrbSize = () => {
+      const width = window.innerWidth;
+      if (width < 480) setOrbSize(180);
+      else if (width < 640) setOrbSize(240);
+      else if (width < 768) setOrbSize(280);
+      else setOrbSize(380);
+    };
+
+    updateOrbSize();
+    window.addEventListener('resize', updateOrbSize);
+    return () => window.removeEventListener('resize', updateOrbSize);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="bg-orb bg-orb-1" />
@@ -17,11 +35,12 @@ export default function Hero() {
         <div className="bg-orb bg-orb-3" />
       </div>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-16 items-center relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="text-center lg:text-left"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -35,13 +54,13 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
             <span className="gradient-text">
               {hero.title}
             </span>
           </h1>
 
-          <p className="mt-6 text-lg text-muted-foreground max-w-lg leading-relaxed">
+          <p className="mt-4 md:mt-6 text-base md:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
             {hero.desc}
           </p>
 
@@ -49,7 +68,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-wrap gap-4 mt-10"
+            className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8 md:mt-10"
           >
             <Link to="/contact">
               <AnimatedButton size="lg" variant="premium">
@@ -68,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center gap-4 mt-10"
+            className="flex justify-center lg:justify-start items-center gap-4 mt-8 md:mt-10"
           >
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
@@ -85,11 +104,11 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-          className="flex justify-center lg:justify-end"
+          className="flex justify-center lg:justify-end mt-8 lg:mt-0"
         >
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-violet-500/20 rounded-full blur-3xl" />
-            <OrbAnimation size={380} className="neon-glow relative" />
+            <OrbAnimation size={orbSize} className="neon-glow relative" />
           </div>
         </motion.div>
       </div>
