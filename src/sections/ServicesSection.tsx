@@ -1,82 +1,57 @@
-"use client";
-
-import React from "react";
-import Link from "next/link";
-import { ArrowRight, Globe, Smartphone, Cpu, Users, MessageSquareText, Video, Search, Megaphone } from "lucide-react";
-import { servicesData } from "@/data/servicesData";
-import Card from "@/components/ui/Card";
-
-const iconMap: Record<string, React.ComponentType<any>> = {
-  Globe,
-  Smartphone,
-  Cpu,
-  Users,
-  MessageSquareText,
-  Video,
-  Search,
-  Megaphone,
-};
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { servicesData } from '@/data/servicesData';
+import { GlassCard } from '@/components/ui/GlassCard';
+import { AnimatedButton } from '@/components/ui/AnimatedButton';
+import * as LucideIcons from 'lucide-react';
 
 export default function ServicesSection() {
+  const getIcon = (name: string) => {
+    const Icon = (LucideIcons as any)[name];
+    return Icon ? <Icon className="w-8 h-8" /> : null;
+  };
+
+  const featuredServices = servicesData.flatMap(c => c.items).slice(0, 6);
+
   return (
-    <section className="py-24 relative overflow-hidden" id="services">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-            Our Premium Services
+    <section className="py-20 px-4 bg-background/50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+            Our Services
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-            We provide full-cycle engineering, intelligent artificial systems, high-converting advertisement funnels, and video marketing.
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive solutions to power your digital transformation.
           </p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="flex flex-col gap-16">
-          {servicesData.map((category) => (
-            <div key={category.title}>
-              {/* Category Title */}
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-8 border-l-4 border-violet-500 pl-4 tracking-wider uppercase">
-                {category.title}
-              </h3>
-
-              {/* Items Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.items.map((service) => {
-                  const IconComponent = iconMap[service.icon] || Globe;
-                  return (
-                    <Card key={service.slug} className="group flex flex-col h-full justify-between" glowColor="rgba(6,182,212,0.08)">
-                      <div>
-                        {/* Icon */}
-                        <div className="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-white/5 border border-violet-500/20 dark:border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-cyan-400/40 transition-all duration-300">
-                          <IconComponent className="w-6 h-6 text-violet-500 dark:text-cyan-400" />
-                        </div>
-
-                        {/* Title */}
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-                          {service.name}
-                        </h4>
-
-                        {/* Description */}
-                        <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
-                          {service.shortDesc}
-                        </p>
-                      </div>
-
-                      {/* Read More Link */}
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 dark:text-cyan-400 hover:gap-3 transition-all duration-200 mt-auto"
-                      >
-                        Explore Service Details
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </Card>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredServices.map((service, idx) => (
+            <motion.div
+              key={service.slug}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <GlassCard className="h-full p-6 flex flex-col hover:border-cyan-400/30 transition-colors">
+                <div className="text-violet-400 mb-3">{getIcon(service.icon)}</div>
+                <h3 className="text-xl font-bold mb-2">{service.name}</h3>
+                <p className="text-muted-foreground text-sm flex-1">{service.shortDesc}</p>
+                <Link to={`/services/${service.slug}`} className="mt-4">
+                  <AnimatedButton variant="outline" size="sm" className="w-full">
+                    Learn More →
+                  </AnimatedButton>
+                </Link>
+              </GlassCard>
+            </motion.div>
           ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link to="/services">
+            <AnimatedButton variant="ghost" size="lg">View All Services →</AnimatedButton>
+          </Link>
         </div>
       </div>
     </section>

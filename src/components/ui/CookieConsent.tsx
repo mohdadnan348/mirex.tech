@@ -1,50 +1,48 @@
-"use client";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatedButton } from './AnimatedButton';
 
-import React, { useState, useEffect } from "react";
-import Button from "./Button";
-
-export default function CookieConsent() {
-  const [showBanner, setShowBanner] = useState(false);
+export function CookieConsent() {
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("mirex-cookies-consent");
-    if (!consent) {
-      // Small timeout to show banner after page hydrations
-      const timer = setTimeout(() => {
-        setShowBanner(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) setVisible(true);
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("mirex-cookies-consent", "accepted");
-    setShowBanner(false);
+  const accept = () => {
+    localStorage.setItem('cookieConsent', 'true');
+    setVisible(false);
   };
 
-  if (!showBanner) return null;
+  const decline = () => {
+    setVisible(false);
+  };
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md z-50 animate-slide-up">
-      <div className="p-6 rounded-2xl glass-panel bg-background-light/95 dark:bg-background-dark/95 border border-violet-500/20 shadow-2xl flex flex-col gap-4">
-        <div>
-          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">Cookie Preferences</h5>
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-            We use cookies to improve user experience, analyze site usage, and support our SMM marketing metrics. By clicking &quot;Accept All&quot;, you consent to our terms.
-          </p>
-        </div>
-        <div className="flex gap-2 justify-end">
-          <button
-            onClick={() => setShowBanner(false)}
-            className="px-4 py-2 text-xs text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"
-          >
-            Decline
-          </button>
-          <Button onClick={handleAccept} size="sm">
-            Accept All
-          </Button>
-        </div>
-      </div>
-    </div>
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          className="fixed bottom-0 left-0 right-0 z-50 p-4 glass border-t border-white/10"
+        >
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+              We use cookies to enhance your experience. By continuing, you agree to our privacy policy.
+            </p>
+            <div className="flex gap-3">
+              <AnimatedButton variant="outline" size="sm" onClick={decline}>
+                Decline
+              </AnimatedButton>
+              <AnimatedButton size="sm" onClick={accept}>
+                Accept
+              </AnimatedButton>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

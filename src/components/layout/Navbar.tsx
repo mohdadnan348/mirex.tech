@@ -1,154 +1,118 @@
-"use client";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { navLinks } from '@/data/navLinks';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { AnimatedButton } from '@/components/ui/AnimatedButton';
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, Sun, Moon, Globe } from "lucide-react";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useTheme } from "@/app/providers";
-import { navLinks } from "@/data/navLinks";
-import Button from "@/components/ui/Button";
-import ConsultationModal from "@/components/ui/ConsultationModal";
-import styles from "./Navbar.module.css";
-
-export default function Navbar() {
-  const pathname = usePathname();
-  const { t, language, toggleLanguage } = useTranslation();
-  const { theme, toggleTheme } = useTheme();
+export function Navbar() {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showConsultModal, setShowConsultModal] = useState(false);
 
-  // Track window scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on page transition
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 z-50">
-            <div className={styles.logoMark}>
-              <span>M</span>
-            </div>
-            <span className="font-extrabold text-xl tracking-wider text-gray-900 dark:text-white">
-              MIREX
-            </span>
-          </Link>
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'glass border-b border-white/10' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 shrink-0 group">
+          <span className="text-2xl font-bold gradient-text">MirexTech</span>
+          <span className="text-xs font-light text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">✦</span>
+        </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`${styles.navLink} ${isActive ? styles.activeLink : ""}`}
-                >
-                  {t(link.labelKey)}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Actions (Lang, Theme, Quote CTA) */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* Lang Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className={styles.actionIconBtn}
-              title="Toggle Language"
-              aria-label="Toggle Language"
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className={`text-sm font-medium transition-all duration-300 relative ${
+                isActive(link.href)
+                  ? 'text-cyan-400'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
-              <Globe className="w-4 h-4" />
-              <span className="text-xs font-bold uppercase">{language}</span>
-            </button>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={styles.actionIconBtn}
-              title="Toggle Theme"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            {/* Consultation Trigger */}
-            <Button variant="glass" size="sm" onClick={() => setShowConsultModal(true)}>
-              {t("nav.consultation")}
-            </Button>
+              {link.label}
+              {isActive(link.href) && (
+                <motion.span
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"
+                />
+              )}
+            </Link>
+          ))}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link to="/contact">
+              <AnimatedButton size="sm" className="ml-2">
+                Free Consultation
+              </AnimatedButton>
+            </Link>
           </div>
+        </nav>
 
-          {/* Mobile Buttons */}
-          <div className="flex lg:hidden items-center gap-4 z-50">
-            <button onClick={toggleTheme} className={styles.actionIconBtn} aria-label="Toggle Theme">
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
+        {/* Mobile Toggle Button */}
+        <button
+          className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
 
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-white"
-              aria-label="Toggle Menu"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Panel */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
         {isOpen && (
-          <div className={styles.mobileMenu}>
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden glass border-b border-white/10"
+          >
+            <div className="px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
-                  className="text-xl font-medium text-gray-800 dark:text-gray-200 hover:text-cyan-400 transition-colors"
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-sm font-medium ${
+                    isActive(link.href)
+                      ? 'text-cyan-400'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                 >
-                  {t(link.labelKey)}
+                  {link.label}
                 </Link>
               ))}
-
-              <div className="flex items-center gap-6 mt-4">
-                <button
-                  onClick={toggleLanguage}
-                  className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
-                >
-                  <Globe className="w-5 h-5" />
-                  <span className="font-bold uppercase">{language}</span>
-                </button>
+              <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                <ThemeToggle />
+                <Link to="/contact" className="flex-1" onClick={() => setIsOpen(false)}>
+                  <AnimatedButton size="sm" className="w-full">
+                    Free Consultation
+                  </AnimatedButton>
+                </Link>
               </div>
-
-              <Button
-                variant="primary"
-                className="mt-4"
-                onClick={() => {
-                  setIsOpen(false);
-                  setShowConsultModal(true);
-                }}
-              >
-                {t("nav.consultation")}
-              </Button>
             </div>
-          </div>
+          </motion.div>
         )}
-      </header>
-
-      {/* Global Consultation Modal */}
-      {showConsultModal && <ConsultationModal onClose={() => setShowConsultModal(false)} />}
-    </>
+      </AnimatePresence>
+    </motion.header>
   );
 }
