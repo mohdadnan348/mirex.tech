@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Github, Twitter, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 export function Footer() {
-  const { t } = useTranslation();
   const year = new Date().getFullYear();
 
   return (
