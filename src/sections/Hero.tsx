@@ -27,12 +27,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
-      {/* Background Orbs */}
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden will-change-transform">
+      {/* Background Orbs – Optimized: fewer orbs & reduced blur on mobile */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="bg-orb bg-orb-1" />
-        <div className="bg-orb bg-orb-2" />
-        <div className="bg-orb bg-orb-3" />
+        <div className="bg-orb bg-orb-1 will-change-transform" />
+        <div className="bg-orb bg-orb-2 will-change-transform" />
+        {/* Third orb removed for performance */}
       </div>
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-16 items-center relative z-10 w-full">
@@ -108,7 +108,7 @@ export default function Hero() {
         >
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-violet-500/20 rounded-full blur-3xl" />
-            <OrbAnimation size={orbSize} className="neon-glow relative" />
+            <OrbAnimation size={orbSize} className="neon-glow relative will-change-transform" />
           </div>
         </motion.div>
       </div>
