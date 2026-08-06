@@ -8,8 +8,6 @@ import { texts } from '@/data/translationData';
 
 export default function Hero() {
   const { hero } = texts;
-
-  // Responsive orb size based on screen width
   const [orbSize, setOrbSize] = useState(380);
 
   useEffect(() => {
@@ -27,12 +25,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden will-change-transform">
-      {/* Background Orbs – Optimized: fewer orbs & reduced blur on mobile */}
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
+      {/* Background Orbs – Lightweight version */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="bg-orb bg-orb-1 will-change-transform" />
-        <div className="bg-orb bg-orb-2 will-change-transform" />
-        {/* Third orb removed for performance */}
+        <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full bg-violet-500/5 blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-16 items-center relative z-10 w-full">
@@ -108,7 +105,7 @@ export default function Hero() {
         >
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-violet-500/20 rounded-full blur-3xl" />
-            <OrbAnimation size={orbSize} className="neon-glow relative will-change-transform" />
+            <OrbAnimation size={orbSize} className="neon-glow relative" />
           </div>
         </motion.div>
       </div>

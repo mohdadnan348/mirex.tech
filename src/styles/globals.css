@@ -378,3 +378,39 @@
   body { background: #fff; color: #000; }
   a { color: #000; text-decoration: underline; }
 }
+
+
+
+
+/* ===== SMOOTH SCROLL ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+}
+
+/* Force hardware acceleration */
+section,
+.relative,
+.absolute {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Reduce animation during scroll */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* For better performance on mobile */
+@media (max-width: 640px) {
+  .bg-orb {
+    filter: blur(80px) !important; /* Less blur on mobile */
+    opacity: 0.15 !important;
+  }
+}
