@@ -30,7 +30,7 @@ export default function ContactCTA() {
                 <AnimatedButton size="lg">{contact.send}</AnimatedButton>
               </Link>
               <a
-                href={`https://wa.me/${phoneNumber}`}
+                href={`https://wa.me/${9336176580}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
