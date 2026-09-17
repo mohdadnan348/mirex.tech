@@ -4,7 +4,7 @@ import { AnimatedButton } from '@/components/ui/AnimatedButton';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { texts } from '@/data/translationData';
 
-const phoneNumber = '+916389709762';
+const phoneNumber = '+919336176580';
 
 export default function ContactCTA() {
   const { contact } = texts;
