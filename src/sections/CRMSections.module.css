@@ -1,0 +1,771 @@
+/* =========================================================
+   CRM SECTIONS
+   Shared styling for all CRM section components
+   ========================================================= */
+
+.crmHero,
+.crmIndustries,
+.crmFeatures,
+.crmPricing,
+.crmModels,
+.crmProcess,
+.crmCaseStudies,
+.crmDemoCta {
+  position: relative;
+  width: 100%;
+}
+
+/* =========================================================
+   COMMON CONTAINER
+   ========================================================= */
+
+.crmContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.crmSectionHeading {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.crmBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  color: #22d3ee;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.crmTitle {
+  margin-top: 20px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.crmDescription {
+  margin: 18px auto 0;
+  max-width: 700px;
+  color: hsl(var(--muted-foreground));
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.crmCard {
+  position: relative;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.crmCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34, 211, 238, 0.2);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.crmIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.12),
+    rgba(139, 92, 246, 0.12)
+  );
+  border: 1px solid rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+}
+
+.crmIconSmall {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.crmGrid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.crmGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.crmGrid4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* =========================================================
+   BADGE / TAGS
+   ========================================================= */
+
+.crmTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: hsl(var(--muted-foreground));
+  font-size: 12px;
+}
+
+.crmTagCyan {
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.15);
+  background: rgba(34, 211, 238, 0.04);
+}
+
+.crmTagViolet {
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.15);
+  background: rgba(139, 92, 246, 0.04);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.crmHeroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.crmHeroVisual {
+  position: relative;
+}
+
+.crmDashboard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  backdrop-filter: blur(20px);
+}
+
+.crmDashboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.crmDashboardStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.crmStatCard {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.crmStatLabel {
+  color: hsl(var(--muted-foreground));
+  font-size: 12px;
+}
+
+.crmStatValue {
+  margin-top: 7px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.crmStatPositive {
+  margin-top: 4px;
+  color: #22d3ee;
+  font-size: 11px;
+}
+
+/* =========================================================
+   INDUSTRIES
+   ========================================================= */
+
+.crmIndustryCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.crmIndustryTitle {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.crmIndustryCard:hover .crmIndustryTitle {
+  color: #22d3ee;
+}
+
+.crmIndustryDescription {
+  margin-top: 10px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.crmIndustryFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 18px;
+  color: #22d3ee;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.crmFeatureCard {
+  height: 100%;
+}
+
+.crmFeatureTitle {
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.crmFeatureDescription {
+  margin-top: 9px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.crmCustomizationBox {
+  position: relative;
+  overflow: hidden;
+  margin-top: 56px;
+  padding: 34px;
+  border-radius: 28px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.035),
+    rgba(139, 92, 246, 0.035),
+    rgba(34, 211, 238, 0.035)
+  );
+  border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+.crmPricingCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  transition: all 0.3s ease;
+}
+
+.crmPricingCard:hover {
+  transform: translateY(-7px);
+  border-color: rgba(34, 211, 238, 0.2);
+}
+
+.crmPricingPopular {
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 50px rgba(34, 211, 238, 0.07);
+}
+
+.crmPricingBadge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+  color: #050505;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.crmPrice {
+  margin-top: 20px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.crmPricePeriod {
+  margin-left: 5px;
+  color: hsl(var(--muted-foreground));
+  font-size: 13px;
+}
+
+.crmPlanDescription {
+  margin-top: 15px;
+  min-height: 70px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.crmFeatureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.crmFeatureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.crmCheck {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.08);
+  color: #22d3ee;
+}
+
+/* =========================================================
+   MONTHLY / PERMANENT MODELS
+   ========================================================= */
+
+.crmModelCard {
+  height: 100%;
+  padding: 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.crmModelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.crmModelTitle {
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.crmModelSubtitle {
+  margin-top: 4px;
+  color: #22d3ee;
+  font-size: 13px;
+}
+
+.crmModelDescription {
+  margin-top: 22px;
+  color: hsl(var(--muted-foreground));
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.crmModelPrice {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.04),
+    rgba(139, 92, 246, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.crmBenefits {
+  margin-top: 70px;
+}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.crmProcess {
+  position: relative;
+}
+
+.crmProcessLine {
+  position: absolute;
+  top: 42px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.3),
+    rgba(139, 92, 246, 0.2),
+    transparent
+  );
+}
+
+.crmStepNumber {
+  position: relative;
+  z-index: 2;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(5, 5, 5, 0.8);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.crmStepInner {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+  border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+.crmStepCard {
+  margin-top: 24px;
+  height: 100%;
+  padding: 24px;
+  border-radius: 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.crmStepDescription {
+  margin-top: 10px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   CASE STUDIES
+   ========================================================= */
+
+.crmCaseCard {
+  height: 100%;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  transition: all 0.3s ease;
+}
+
+.crmCaseCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34, 211, 238, 0.2);
+}
+
+.crmCaseHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.crmCaseIndustry {
+  color: #22d3ee;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.crmCaseTitle {
+  margin-top: 4px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.crmCaseDescription {
+  margin-top: 20px;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.crmCaseModules {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.crmCaseModuleList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 14px;
+}
+
+.crmCaseModule {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: hsl(var(--muted-foreground));
+  font-size: 13px;
+}
+
+.crmBusinessesBanner {
+  position: relative;
+  overflow: hidden;
+  margin-top: 56px;
+  padding: 36px 24px;
+  border-radius: 28px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.04),
+    rgba(139, 92, 246, 0.04)
+  );
+  border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+.crmBusinessesNumber {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DEMO CTA
+   ========================================================= */
+
+.crmDemoCtaCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+.crmDemoCtaContent {
+  padding: 56px;
+}
+
+.crmDemoInfoCard {
+  height: 100%;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.crmDemoInfoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.crmDemoSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.crmDemoStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crmDemoStepNumber {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .crmGrid4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .crmProcessLine {
+    display: none;
+  }
+
+  .crmDemoCtaContent {
+    padding: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .crmContainer {
+    padding: 0 18px;
+  }
+
+  .crmGrid2,
+  .crmGrid3,
+  .crmGrid4 {
+    grid-template-columns: 1fr;
+  }
+
+  .crmCard,
+  .crmPricingCard,
+  .crmModelCard,
+  .crmCaseCard {
+    padding: 22px;
+  }
+
+  .crmDashboard {
+    padding: 18px;
+  }
+
+  .crmCustomizationBox,
+  .crmBusinessesBanner {
+    padding: 26px 20px;
+  }
+
+  .crmDemoCtaContent {
+    padding: 30px 22px;
+  }
+
+  .crmCaseModuleList {
+    grid-template-columns: 1fr;
+  }
+
+  .crmPrice {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .crmContainer {
+    padding: 0 14px;
+  }
+
+  .crmDashboardStats {
+    gap: 8px;
+  }
+
+  .crmStatCard {
+    padding: 13px;
+  }
+
+  .crmStatValue {
+    font-size: 20px;
+  }
+
+  .crmModelHeader {
+    flex-direction: column;
+  }
+
+  .crmDemoInfoCard {
+    padding: 20px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .crmCard,
+  .crmPricingCard,
+  .crmCaseCard,
+  .crmIndustryTitle {
+    transition: none;
+  }
+}
