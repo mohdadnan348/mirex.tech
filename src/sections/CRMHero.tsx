@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AnimatedButton } from '@/components/ui/AnimatedButton';
-import { ArrowRight, Sparkles, Users, Clock3 } from 'lucide-react';
+import { ArrowRight, Sparkles, Users } from 'lucide-react';
 
 export default function CRMHero() {
   return (
@@ -51,51 +51,7 @@ export default function CRMHero() {
               billing, reports and business automation.
             </p>
 
-            {/* Trust Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mt-7"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-cyan-400/10">
-                <Users className="w-4 h-4 text-cyan-400" />
-                <span className="text-sm text-muted-foreground">
-                  <span className="text-cyan-400 font-semibold">50+</span>{' '}
-                  Businesses
-                </span>
-              </div>
-
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-violet-400/10">
-                <Clock3 className="w-4 h-4 text-violet-400" />
-                <span className="text-sm text-muted-foreground">
-                  <span className="text-violet-400 font-semibold">30 Min</span>{' '}
-                  Personalized Demo
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Pricing Highlight */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="mt-6"
-            >
-              <p className="text-sm text-muted-foreground">
-                CRM plans starting from
-              </p>
-
-              <div className="mt-1 flex items-baseline justify-center lg:justify-start gap-2">
-                <span className="text-3xl md:text-4xl font-bold text-foreground">
-                  ₹1,999
-                </span>
-
-                <span className="text-sm text-muted-foreground">
-                  / month
-                </span>
-              </div>
-            </motion.div>
+            <p className="mt-6 text-sm text-muted-foreground">Designed for sales teams, service providers and operations-led businesses.</p>
 
             {/* CTA Buttons */}
             <motion.div
@@ -106,7 +62,7 @@ export default function CRMHero() {
             >
               <Link to="/contact">
                 <AnimatedButton size="lg" variant="premium">
-                  Book 30-Min Demo
+                  Discuss Your CRM
                   <ArrowRight className="w-4 h-4" />
                 </AnimatedButton>
               </Link>
@@ -125,7 +81,7 @@ export default function CRMHero() {
               transition={{ delay: 0.7 }}
               className="mt-5 text-xs text-muted-foreground"
             >
-              Monthly plans available • Permanent custom CRM also available
+              Monthly and custom implementation options can be discussed.
             </motion.p>
           </motion.div>
 
@@ -163,47 +119,19 @@ export default function CRMHero() {
                   </div>
                 </div>
 
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-3 mt-5">
-                  <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-4">
-                    <p className="text-xs text-muted-foreground">
-                      Customers
-                    </p>
-                    <p className="text-2xl font-bold mt-2">2,480</p>
-                    <p className="text-xs text-cyan-400 mt-1">
-                      +12.5%
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-4">
-                    <p className="text-xs text-muted-foreground">
-                      Active Leads
-                    </p>
-                    <p className="text-2xl font-bold mt-2">348</p>
-                    <p className="text-xs text-violet-400 mt-1">
-                      +8.2%
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-4">
-                    <p className="text-xs text-muted-foreground">
-                      Sales
-                    </p>
-                    <p className="text-2xl font-bold mt-2">₹8.4L</p>
-                    <p className="text-xs text-cyan-400 mt-1">
-                      This Month
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-4">
-                    <p className="text-xs text-muted-foreground">
-                      Tasks
-                    </p>
-                    <p className="text-2xl font-bold mt-2">126</p>
-                    <p className="text-xs text-violet-400 mt-1">
-                      24 Pending
-                    </p>
-                  </div>
+                <p className="mt-4 text-[11px] uppercase tracking-wider text-muted-foreground">Illustrative CRM interface · modules shown as examples</p>
+                <div className="grid grid-cols-2 gap-3 mt-2">
+                  {[
+                    ['Customers', 'Customer records and history'],
+                    ['Active leads', 'Enquiry and follow-up pipeline'],
+                    ['Invoices', 'Billing and payment records'],
+                    ['Tasks', 'Team activities and reminders'],
+                  ].map(([label, description]) => (
+                    <div key={label} className="rounded-2xl bg-white/[0.03] border border-white/5 p-4">
+                      <p className="text-xs text-muted-foreground">{label}</p>
+                      <p className="text-sm font-medium mt-2">{description}</p>
+                    </div>
+                  ))}
                 </div>
 
                 {/* CRM Modules */}

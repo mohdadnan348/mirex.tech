@@ -3,26 +3,26 @@
 
 export const texts = {
   hero: {
-    sub: "MIREX TECHNOLOGY GROUP",
-    title: "We Build AI-Powered Software That Grows Businesses.",
-    desc: "From custom websites to advanced AI automation, we transform your digital ideas into scalable, high-performance products.",
+    sub: "SOFTWARE FOR THE WAY YOU WORK",
+    title: "Technology That Moves Businesses Forward.",
+    desc: "We build websites, business software, mobile applications, ERP/CRM platforms and AI-powered workflows for growing businesses.",
     ctaConsultation: "Get Free Consultation",
     ctaPortfolio: "View Portfolio"
   },
   trusted: "TRUSTED TECHNOLOGIES & TOOLS",
   stats: {
     delivery: "Fast Delivery",
-    deliveryDesc: "Agile methodology & 2-week sprint releases",
-    uptime: "99.9% Uptime",
-    uptimeDesc: "Robust cloud architecture on Vercel & AWS",
+    deliveryDesc: "Milestones and delivery plans agreed around your project scope.",
+    uptime: "Reliable Foundations",
+    uptimeDesc: "Maintainable architecture and deployment practices suited to your project.",
     ui: "Modern UI/UX",
-    uiDesc: "Apple & Vercel-inspired glassmorphism designs",
+    uiDesc: "Clear interfaces designed around your users and workflows.",
     security: "Secure Development",
     securityDesc: "JWT, RBAC, HTTPS, and strong encryption out of the box",
     pricing: "Affordable Plans",
     pricingDesc: "Premium quality customized to your budget",
-    support: "24/7 Support",
-    supportDesc: "Direct WhatsApp and email channels anytime"
+    support: "Ongoing Support",
+    supportDesc: "Support options agreed around your project needs"
   },
   pricing: {
     title: "Flexible Pricing Plans",
@@ -58,13 +58,13 @@ export const texts = {
     title: "Frequently Asked Questions",
     subtitle: "Common questions about our services and policies",
     q1: "How long does a website take to build?",
-    a1: "A basic website takes 2-3 weeks. A complex ERP or custom AI application usually takes 4-8 weeks depending on requirements.",
+    a1: "Timelines depend on scope, content, integrations, feedback and approvals. We share milestones after reviewing your requirements.",
     q2: "Do you provide post-launch maintenance?",
     a2: "Yes! We offer monthly maintenance, updates, backups, security patches, and cloud monitoring packages.",
     q3: "Can you manage our social media and ads?",
     a3: "Absolutely. We offer complete SMM packages, content creation, Meta ads, Google ads, and SEO optimization.",
     q4: "Do I get full ownership of the source code?",
-    a4: "Yes, 100%. Once projects are completed, we transfer the full intellectual property rights and code repositories to you."
+    a4: "Source-code access, ownership and handover terms are agreed and documented as part of the project contract."
   },
   contact: {
     title: "Let's Build Something Amazing Together",

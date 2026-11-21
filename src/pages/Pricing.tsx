@@ -13,7 +13,7 @@ export default function Pricing() {
           name="description"
           content="Flexible pricing plans for web development, AI solutions, digital marketing services, and customizable CRM solutions."
         />
-      </Helmet>
+              <link rel="canonical" href="https://mirextech.in/pricing" />\n</Helmet>
 
       <div className="py-20">
         {/* Existing Services Pricing */}

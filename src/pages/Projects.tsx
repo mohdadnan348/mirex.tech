@@ -10,8 +10,9 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Our Projects – MirexTech</title>
-        <meta name="description" content="Explore our portfolio of web, mobile, and AI projects built for clients across industries." />
+        <title>Software Development Portfolio | MirexTech</title>
+        <meta name="description" content="Explore selected MirexTech projects across business software, ERP/CRM, websites and mobile applications." />
+        <link rel="canonical" href="https://mirextech.in/projects" />
       </Helmet>
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -23,7 +24,7 @@ export default function Projects() {
             Our Projects
           </motion.h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            A showcase of our finest work across various domains.
+            Selected projects and implementations across business software, websites and mobile applications.
           </p>
         </div>
 
@@ -37,7 +38,7 @@ export default function Projects() {
               viewport={{ once: true }}
             >
               <GlassCard className="h-full flex flex-col overflow-hidden">
-                <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover rounded-t-xl" />
+                <img src={project.imageUrl} alt={`${project.title} representative project visual`} loading="lazy" decoding="async" className="w-full h-48 object-cover rounded-t-xl" />
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-muted-foreground text-sm flex-1">{project.description}</p>
@@ -62,9 +63,9 @@ export default function Projects() {
                         <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-accent">
+                    {project.githubUrl !== '#' && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source on GitHub`} className="p-2 rounded-lg hover:bg-accent">
                       <Github className="w-4 h-4" />
-                    </a>
+                    </a>}
                   </div>
                 </div>
               </GlassCard>

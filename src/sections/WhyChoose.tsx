@@ -4,11 +4,11 @@ import { GlassCard } from '@/components/ui/GlassCard';
 
 const reasons = [
   { icon: Zap, title: 'Cutting-Edge Tech', desc: 'We use the latest frameworks and AI to deliver superior products.' },
-  { icon: Shield, title: 'Secure & Scalable', desc: 'Your data is safe with us, and our solutions grow with your business.' },
+  { icon: Shield, title: 'Secure & Scalable', desc: 'We consider access control, maintainability, and scalability throughout the build.' },
   { icon: Users, title: 'Client-Centric', desc: 'We listen, collaborate, and deliver beyond expectations.' },
-  { icon: Clock, title: 'On-Time Delivery', desc: 'Agile sprints ensure we deliver on schedule, every time.' },
+  { icon: Clock, title: 'On-Time Delivery', desc: 'We agree on milestones, communicate progress, and make delivery expectations clear.' },
   { icon: Globe, title: 'Global Standards', desc: 'We follow international best practices and coding standards.' },
-  { icon: CheckCircle, title: '100% Satisfaction', desc: 'We don\'t stop until you are thrilled with the results.' },
+  { icon: CheckCircle, title: 'Clear Delivery', desc: 'We don\'t stop until you are thrilled with the results.' },
 ];
 
 export default function WhyChoose() {

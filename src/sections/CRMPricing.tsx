@@ -250,14 +250,14 @@ export default function CRMPricing() {
             </h3>
 
             <p className="mt-2 text-sm text-muted-foreground">
-              Tell us about your business. We'll demonstrate the CRM around
-              your workflow in a personalized 30-minute demo.
+              Tell us about your business. We’ll discuss your workflow and walk through
+              relevant CRM modules.
             </p>
 
             <div className="mt-5 flex justify-center">
               <Link to="/contact">
                 <AnimatedButton variant="premium">
-                  Book 30-Min Demo
+                  Discuss Your Requirements
                   <ArrowRight className="w-4 h-4" />
                 </AnimatedButton>
               </Link>

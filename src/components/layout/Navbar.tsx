@@ -72,7 +72,9 @@ export function Navbar() {
         <button
           className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -86,6 +88,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
+            id="mobile-navigation"
             className="md:hidden border-b border-border bg-background"
           >
             <div className="px-4 py-6 flex flex-col gap-4">

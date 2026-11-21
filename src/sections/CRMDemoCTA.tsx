@@ -46,7 +46,7 @@ export default function CRMDemoCTA() {
                 <Sparkles className="w-4 h-4 text-cyan-400" />
 
                 <span className="text-xs font-medium text-cyan-400 uppercase tracking-wider">
-                  Personalized CRM Demo
+                  CRM Consultation
                 </span>
               </motion.div>
 
@@ -73,7 +73,7 @@ export default function CRMDemoCTA() {
 
                   <div>
                     <h3 className="text-sm font-semibold">
-                      30-Minute Demo
+                      Project Discussion
                     </h3>
 
                     <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
@@ -109,7 +109,7 @@ export default function CRMDemoCTA() {
                     </h3>
 
                     <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                      Choose a suitable date and time for your demo.
+                      Share a suitable time and we can coordinate a discussion.
                     </p>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function CRMDemoCTA() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link to="/contact">
                   <AnimatedButton variant="premium" size="lg">
-                    Book 30-Min Demo
+                    Discuss Your CRM
                     <ArrowRight className="w-4 h-4" />
                   </AnimatedButton>
                 </Link>
@@ -173,7 +173,7 @@ export default function CRMDemoCTA() {
                     </p>
 
                     <h3 className="text-lg font-semibold">
-                      CRM Demo
+                      CRM Discussion
                     </h3>
                   </div>
                 </div>
@@ -182,11 +182,11 @@ export default function CRMDemoCTA() {
                 <div className="mt-6 space-y-3">
                   <div className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/5">
                     <span className="text-sm text-muted-foreground">
-                      Duration
+                      Meeting format
                     </span>
 
                     <span className="text-sm font-medium text-cyan-400">
-                      30 Minutes
+                      Scheduled by agreement
                     </span>
                   </div>
 

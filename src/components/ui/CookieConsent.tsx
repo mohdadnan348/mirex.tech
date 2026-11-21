@@ -11,11 +11,12 @@ export function CookieConsent() {
   }, []);
 
   const accept = () => {
-    localStorage.setItem('cookieConsent', 'true');
+    localStorage.setItem('cookieConsent', 'accepted');
     setVisible(false);
   };
 
   const decline = () => {
+    localStorage.setItem('cookieConsent', 'declined');
     setVisible(false);
   };
 
@@ -30,7 +31,7 @@ export function CookieConsent() {
         >
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              We use cookies to enhance your experience. By continuing, you agree to our privacy policy.
+              This site stores your consent choice locally. Optional analytics cookies are not currently enabled.
             </p>
             <div className="flex gap-3">
               <AnimatedButton variant="outline" size="sm" onClick={decline}>

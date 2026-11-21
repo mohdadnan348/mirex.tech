@@ -29,7 +29,7 @@ In this guide, we'll break down the practical steps you can take to introduce AI
 
 ## 1. Automated Customer Support (RAG Chatbots)
 Customer service is often a primary bottleneck. Traditional rule-based bots frustrate users by failing to understand context. AI chatbots powered by models like DeepSeek, Gemini, or OpenAI can converse naturally and retrieve specific data from your knowledge base (using Retrieval-Augmented Generation or RAG).
-- **Benefit**: Resolves 80% of standard questions instantly.
+- **Benefit**: Can handle common questions automatically when configured with reliable business information.
 - **Result**: Support agents focus on high-priority client concerns.
 
 ## 2. Smart Workflow Automation
@@ -160,7 +160,7 @@ Automation is the key to business scalability. When you replace manual file movi
 2. **Set up API Connections**: Connect your databases, CRMs, WhatsApp accounts, and email services.
 3. **Trigger-Action Loops**: When a user fills a form (trigger), send their info to CRM, draft an email draft with AI, and alert the sales director on WhatsApp (actions).
 
-At MirexTech, we design AI automation systems that double your business throughput. We handle everything from security JWT keys, database tracking, to cloud infrastructure. Contact us for a free audit!
+At MirexTech, we design AI automation systems that streamline selected business workflows. We handle everything from security JWT keys, database tracking, to cloud infrastructure. Contact us for a free audit!
     `
   }
 ];

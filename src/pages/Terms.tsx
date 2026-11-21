@@ -7,7 +7,7 @@ export default function Terms() {
       <Helmet>
         <title>Terms of Service – MirexTech</title>
         <meta name="description" content="Terms of service for using MirexTech's website and services." />
-      </Helmet>
+              <link rel="canonical" href="https://mirextech.in/terms" />\n</Helmet>
       <section className="py-20 px-4 md:px-8 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

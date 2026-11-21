@@ -254,7 +254,7 @@ export const crmProcess = [
     step: "03",
     title: "CRM Demo",
     description:
-      "We provide a business-specific demo within approximately 30 minutes to show how the CRM can work for you.",
+      "We can arrange a walkthrough to discuss how the CRM may fit your business workflow.",
     icon: "MonitorPlay",
   },
   {
@@ -337,26 +337,10 @@ export const crmCaseStudies: CRMCaseStudy[] = [
 ];
 
 export const crmStats = [
-  {
-    value: "50+",
-    label: "Businesses",
-    description: "Using our CRM solutions",
-  },
-  {
-    value: "30 Min",
-    label: "Demo",
-    description: "Business-specific CRM demo",
-  },
-  {
-    value: "100%",
-    label: "Customizable",
-    description: "Built around your workflow",
-  },
-  {
-    value: "24/7",
-    label: "Access",
-    description: "Cloud-based business management",
-  },
+  { value: "Leads", label: "Pipeline", description: "Manage enquiries and follow-ups." },
+  { value: "Teams", label: "Permissions", description: "Configure access by user role." },
+  { value: "Reports", label: "Visibility", description: "Review operational information." },
+  { value: "Workflows", label: "Automation", description: "Connect tasks and business steps." },
 ];
 
 export const crmFaqs = [
@@ -383,7 +367,7 @@ export const crmFaqs = [
   {
     question: "Can we see a demo before purchasing?",
     answer:
-      "Yes. We can provide a business-specific CRM demo in approximately 30 minutes so you can understand how the system can fit your workflow.",
+      "Yes. We can arrange a business-specific walkthrough so you can understand how the system may fit your workflow.",
   },
   {
     question: "Can we add new features later?",

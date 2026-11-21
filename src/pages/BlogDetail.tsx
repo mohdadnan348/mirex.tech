@@ -20,7 +20,7 @@ export default function BlogDetail() {
       <Helmet>
         <title>{post.title} – MirexTech Blog</title>
         <meta name="description" content={post.excerpt} />
-      </Helmet>
+              <link rel="canonical" href={`https://mirextech.in/blog/${post.slug}`} />\n</Helmet>
       <section className="py-20 px-4 md:px-8 max-w-3xl mx-auto">
         <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
           <ArrowLeft className="w-4 h-4" /> Back to Blog

@@ -18,9 +18,9 @@ const steps = [
   {
     number: '02',
     icon: Presentation,
-    title: 'Get a 30-Minute Demo',
+    title: 'Schedule a CRM Discussion',
     description:
-      'We understand your requirements and demonstrate how the CRM can fit your business workflow in a personalized demo.',
+      'We understand your requirements and demonstrate how the CRM can fit your business workflow in a walkthrough tailored to your requirements.',
   },
   {
     number: '03',

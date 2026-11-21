@@ -12,7 +12,7 @@ export default function Blog() {
       <Helmet>
         <title>Blog – MirexTech</title>
         <meta name="description" content="Read the latest insights on AI, web development, SEO, and business growth from MirexTech." />
-      </Helmet>
+              <link rel="canonical" href="https://mirextech.in/blog" />\n</Helmet>
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.h1

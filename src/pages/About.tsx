@@ -13,8 +13,9 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About MirexTech – AI Software Agency</title>
-        <meta name="description" content="Learn about MirexTech, a premium software agency specializing in AI, web development, and digital transformation." />
+        <title>About MirexTech | Technology Partner for Businesses</title>
+        <meta name="description" content="Learn how MirexTech plans and develops websites, custom software, ERP/CRM systems, mobile apps and business automation." />
+        <link rel="canonical" href="https://mirextech.in/about" />
       </Helmet>
       <section className="py-20 px-4 md:px-8 max-w-6xl mx-auto">
         <motion.div
@@ -27,7 +28,7 @@ export default function About() {
             About MirexTech
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            We are a team of passionate engineers, designers, and AI experts dedicated to building the future of software.
+            MirexTech works with businesses to plan, design, and develop practical digital products — from business websites to custom software and workflow automation.
           </p>
         </motion.div>
 

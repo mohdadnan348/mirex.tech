@@ -9,8 +9,9 @@ export default function Careers() {
   return (
     <>
       <Helmet>
-        <title>Careers – MirexTech</title>
-        <meta name="description" content="Join the MirexTech team. We're hiring React developers, backend engineers, and designers." />
+        <title>Careers | MirexTech</title>
+        <meta name="description" content="Connect with MirexTech about future opportunities in software development, engineering and product design." />
+        <link rel="canonical" href="https://mirextech.in/careers" />
       </Helmet>
       <section className="py-20 px-4 md:px-8 max-w-5xl mx-auto">
         <div className="text-center mb-16">
@@ -22,11 +23,20 @@ export default function Careers() {
             Careers
           </motion.h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Build the future with us. Explore open positions and join our team of innovators.
+            Interested in working with MirexTech? Reach out with your profile and the kind of work you would like to contribute to.
           </p>
         </div>
 
         <div className="space-y-6">
+          {jobOpenings.length === 0 && (
+            <GlassCard className="p-8 text-center">
+              <h2 className="text-2xl font-semibold mb-3">No published vacancies right now</h2>
+              <p className="text-muted-foreground max-w-xl mx-auto mb-6">You can still introduce yourself and share your portfolio. We will keep your details in mind if a suitable opportunity comes up.</p>
+              <a href="mailto:hello.mirextech@gmail.com?subject=Career%20Enquiry">
+                <AnimatedButton>Send your profile</AnimatedButton>
+              </a>
+            </GlassCard>
+          )}
           {jobOpenings.map((job, idx) => (
             <motion.div
               key={job.id}
@@ -54,7 +64,9 @@ export default function Careers() {
                       )}
                     </ul>
                   </div>
-                  <AnimatedButton className="shrink-0">Apply Now</AnimatedButton>
+                  <a href={`mailto:hello.mirextech@gmail.com?subject=${encodeURIComponent(`Application: ${job.title}`)}`}>
+                    <AnimatedButton className="shrink-0">Apply Now</AnimatedButton>
+                  </a>
                 </div>
               </GlassCard>
             </motion.div>

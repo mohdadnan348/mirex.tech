@@ -7,11 +7,10 @@
 @tailwind utilities;
 
 /*
-  ===== THEME: INK & EMBER =====
-  A departure from the default neon-glass look. Warm, low-saturation
-  darkness (ink) punctuated by a single confident heat source (ember),
-  with signal-violet held in reserve as a rare counterpoint — not an
-  equal partner. Fraunces carries personality in headings; Inter stays
+  ===== THEME: INK, CYAN & VIOLET =====
+  A warm neutral foundation with ink surfaces, a clear cyan accent,
+  and violet reserved for secondary emphasis. Motion and translucent
+  surfaces stay subtle so content remains the focus. Fraunces carries personality in headings; Inter stays
   quiet in body copy; JetBrains Mono marks data, labels, and captions.
 */
 
@@ -29,20 +28,20 @@
     --secondary-foreground: 240 10% 6%;
     --muted: 36 18% 91%;
     --muted-foreground: 245 4% 46%;    /* #8B8A94 mist */
-    --accent: 16 100% 62%;             /* #FF6B35 ember */
-    --accent-foreground: 40 20% 97%;
+    --accent: 190 90% 42%;             /* Mirex cyan */
+    --accent-foreground: 240 10% 6%;
     --destructive: 4 78% 52%;
     --destructive-foreground: 40 20% 97%;
     --border: 36 16% 87%;
     --input: 36 16% 87%;
-    --ring: 16 100% 62%;
+    --ring: 190 90% 42%;
     --radius: 0.6rem;
 
     /* signature accents, referenced directly where HSL vars are overkill */
-    --ember: #FF6B35;
-    --ember-deep: #D94A1A;
-    --violet: #7C5CFF;
-    --gold: #D4AF37;
+    --ember: #22D3EE;
+    --ember-deep: #0891B2;
+    --violet: #8B5CF6;
+    --gold: #A78BFA;
     --mist: #8B8A94;
 
     /* fluid type scale */
@@ -73,13 +72,13 @@
     --secondary-foreground: 40 20% 96%;
     --muted: 240 7% 13%;
     --muted-foreground: 245 6% 60%;
-    --accent: 16 100% 62%;
+    --accent: 190 90% 42%;
     --accent-foreground: 240 10% 6%;
     --destructive: 4 70% 45%;
     --destructive-foreground: 40 20% 96%;
     --border: 240 7% 16%;
     --input: 240 7% 16%;
-    --ring: 16 100% 62%;
+    --ring: 190 90% 42%;
 
     color-scheme: dark;
   }
@@ -260,18 +259,31 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ===== SHARED SURFACES =====
+   Subtle, consistent surfaces for navigation, cards and overlays. */
+.glass {
+  background: color-mix(in srgb, hsl(var(--card)) 88%, transparent);
+  border: 1px solid hsl(var(--border));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+.neon-glow {
+  filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.14));
+}
+
 /* ===== CARD SURFACE — replaces generic glassmorphism ===== */
 .ember-card {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(255, 107, 53, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(34, 211, 238, 0.07);
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .ember-card:hover {
-  border-color: rgba(255, 107, 53, 0.35);
+  border-color: rgba(34, 211, 238, 0.30);
   transform: translateY(-2px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -14px rgba(255, 107, 53, 0.18);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -14px rgba(34, 211, 238, 0.14);
 }
 
 /* Reserve violet for rare emphasis — a single interactive state, not a gradient partner */
@@ -318,11 +330,11 @@
   height: 4px;
   border-radius: 50%;
   background: var(--ember);
-  box-shadow: 0 0 8px 2px rgba(255, 107, 53, 0.6);
+  box-shadow: 0 0 8px 2px rgba(34, 211, 238, 0.55);
   opacity: 0;
   animation: emberRise 9s ease-in infinite;
 }
-.ember-particle:nth-child(2n) { background: var(--gold); box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.5); width: 3px; height: 3px; }
+.ember-particle:nth-child(2n) { background: var(--gold); box-shadow: 0 0 6px 2px rgba(139, 92, 246, 0.5); width: 3px; height: 3px; }
 .ember-particle:nth-child(3n) { animation-duration: 12s; }
 .ember-particle:nth-child(4n) { animation-duration: 7s; width: 2px; height: 2px; }
 
@@ -338,7 +350,7 @@
   width: clamp(320px, 60vw, 900px);
   height: clamp(320px, 60vw, 900px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 53, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.14), transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }

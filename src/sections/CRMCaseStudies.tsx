@@ -178,7 +178,7 @@ export default function CRMCaseStudies() {
           })}
         </div>
 
-        {/* 50+ Businesses Banner */}
+        {/* CRM workflow overview */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -191,12 +191,8 @@ export default function CRMCaseStudies() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
 
             <div className="relative z-10">
-              <p className="text-4xl md:text-5xl font-bold gradient-text">
-                50+
-              </p>
-
-              <h3 className="mt-2 text-xl md:text-2xl font-bold">
-                Businesses Using Our CRM Solutions
+              <h3 className="text-xl md:text-2xl font-bold">
+                CRM workflows shaped around your business
               </h3>
 
               <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base text-muted-foreground leading-relaxed">

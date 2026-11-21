@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <Helmet>
         <title>Privacy Policy – MirexTech</title>
         <meta name="description" content="Privacy policy of MirexTech – how we collect, use, and protect your personal information." />
-      </Helmet>
+              <link rel="canonical" href="https://mirextech.in/privacy" />\n</Helmet>
       <section className="py-20 px-4 md:px-8 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

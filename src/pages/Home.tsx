@@ -21,14 +21,14 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>MirexTech – Premium AI Software Agency</title>
+        <title>MirexTech | Software Development Company in Kanpur, India</title>
 
         <meta
           name="description"
-          content="MirexTech builds AI-powered software, websites, mobile apps, CRM systems, and automation solutions for modern businesses. Get a free consultation today."
+          content="MirexTech develops business websites, custom software, ERP/CRM platforms, mobile apps and AI automation for businesses in Kanpur and across India."
         />
 
-        <link rel="canonical" href="/" />
+        <link rel="canonical" href="https://mirextech.in/" />
       </Helmet>
 
       <div className={styles.home}>

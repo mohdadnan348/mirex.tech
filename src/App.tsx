@@ -7,7 +7,6 @@ import { CursorGlow } from './components/ui/CursorGlow';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { FloatingWhatsApp } from './components/ui/FloatingWhatsApp';
-import { AIAssistant } from './components/ui/AIAssistant';
 import { CookieConsent } from './components/ui/CookieConsent';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
           <ScrollToTop />
           <AppRoutes />
           <FloatingWhatsApp />
-          <AIAssistant />
           <CookieConsent />
         </BrowserRouter>
       </ThemeProvider>

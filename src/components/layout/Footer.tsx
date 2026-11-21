@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Github, Instagram, Mail, Phone } from 'lucide-react';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -7,23 +7,18 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           <div>
             <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
               MirexTech
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Building the future with AI-powered software.
+              Technology That Moves Businesses Forward.
+Websites, software, mobile apps and business automation.
             </p>
             <div className="flex gap-4 mt-4">
               <a href="https://github.com/mohdadnan348" aria-label="GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="w-5 h-5" />
-              </a>
-              <a href="https://x.com/Mirextech3x" aria-label="Twitter" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://www.linkedin.com/in/mirextech-undefined-926a44426/" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Linkedin className="w-5 h-5" />
               </a>
               <a href="https://www.instagram.com/mirex.tech/" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Instagram className="w-5 h-5" />
@@ -50,6 +45,14 @@ export function Footer() {
             </ul>
           </div>
 
+          <div>
+            <h4 className="font-semibold mb-3">Contact</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground" href="mailto:hello.mirextech@gmail.com"><Mail className="h-4 w-4" /> Email us</a></li>
+              <li><a className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground" href="tel:+919336176580"><Phone className="h-4 w-4" /> +91 9336176580</a></li>
+              <li className="text-muted-foreground">Kanpur, Uttar Pradesh, India</li>
+            </ul>
+          </div>
           <div>
             <h4 className="font-semibold mb-3">Legal</h4>
             <ul className="space-y-2 text-sm">

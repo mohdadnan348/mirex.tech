@@ -25,8 +25,31 @@ export default function ServicesDetail() {
   return (
     <>
       <Helmet>
-        <title>{service.name} – MirexTech</title>
+        <title>{service.name} | MirexTech</title>
         <meta name="description" content={service.shortDesc} />
+        <link rel="canonical" href={`https://mirextech.in/services/${service.slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${service.name} | MirexTech`} />
+        <meta property="og:description" content={service.shortDesc} />
+        <meta property="og:url" content={`https://mirextech.in/services/${service.slug}`} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": service.name,
+          "description": service.shortDesc,
+          "provider": { "@type": "Organization", "name": "MirexTech", "url": "https://mirextech.in/" },
+          "areaServed": { "@type": "Country", "name": "India" },
+          "url": `https://mirextech.in/services/${service.slug}`
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mirextech.in/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://mirextech.in/services" },
+            { "@type": "ListItem", "position": 3, "name": service.name, "item": `https://mirextech.in/services/${service.slug}` }
+          ]
+        })}</script>
       </Helmet>
       <section className="py-20 px-4 md:px-8 max-w-4xl mx-auto">
         <Link to="/services" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
@@ -67,7 +90,7 @@ export default function ServicesDetail() {
             </GlassCard>
           </div>
           <div className="mt-10 text-center">
-            <Link to="/contact">
+            <Link to={`/contact?service=${encodeURIComponent(service.name)}`}>
               <AnimatedButton size="lg">Get Started with {service.name}</AnimatedButton>
             </Link>
           </div>

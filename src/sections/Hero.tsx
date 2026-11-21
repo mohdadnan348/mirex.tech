@@ -47,7 +47,7 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 text-cyan-400" />
             <span className="text-xs font-medium text-cyan-400 tracking-wider uppercase">
-              {hero.sub}
+              Technology partner for growing businesses
             </span>
           </motion.div>
 
@@ -58,7 +58,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-4 md:mt-6 text-base md:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            {hero.desc}
+            We design and develop websites, custom software, mobile applications, ERP/CRM platforms and AI-powered workflows that help businesses work smarter.
           </p>
 
           <motion.div
@@ -80,21 +80,9 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex justify-center lg:justify-start items-center gap-4 mt-8 md:mt-10"
-          >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-gradient-to-br from-cyan-400/20 to-violet-500/20" />
-              ))}
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <span className="text-cyan-400 font-semibold">500+</span> clients trust us
-            </p>
-          </motion.div>
+          <p className="mt-7 text-sm text-muted-foreground">
+            Web platforms · Business software · Mobile apps · AI automation
+          </p>
         </motion.div>
 
         <motion.div

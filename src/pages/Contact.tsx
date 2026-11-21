@@ -1,47 +1,62 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { AnimatedButton } from '@/components/ui/AnimatedButton';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
-import { texts } from '@/data/translationData';
+
+type FormStatus = 'idle' | 'success' | 'error';
+
+const initialForm = {
+  name: '', email: '', phone: '', company: '', service: new URLSearchParams(window.location.search).get('service') || '',
+  budget: '', message: '', preferredContact: 'WhatsApp',
+};
+
+const inputClass = 'w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:ring-2 focus:ring-cyan-500';
+const labelClass = 'mb-1.5 block text-sm font-medium';
 
 export default function Contact() {
-  const { contact } = texts;
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<FormStatus>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData((current) => ({ ...current, [e.target.name]: e.target.value }));
+    if (status !== 'idle') setStatus('idle');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus('idle');
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      await emailjs.send(
-        import.meta.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        import.meta.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        import.meta.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: formData.service,
+        budget: formData.budget,
+        preferred_contact: formData.preferredContact,
+        subject: `New project enquiry${formData.company ? ` — ${formData.company}` : ''}`,
+        message: formData.message,
+        reply_to: formData.email,
+      }, publicKey);
       setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+      setFormData(initialForm);
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -51,140 +66,49 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact MirexTech – Get a Free Consultation</title>
-        <meta name="description" content="Contact MirexTech for AI-powered software, web development, and digital marketing solutions." />
+        <title>Contact MirexTech | Discuss Your Software Project</title>
+        <meta name="description" content="Talk to MirexTech about website development, custom software, ERP/CRM, mobile apps and AI automation. Share your project requirements and request a quotation." />
+        <link rel="canonical" href="https://mirextech.in/contact" />
       </Helmet>
-      <section className="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent"
-          >
-            {contact.title}
+      <section className="mx-auto max-w-6xl px-4 py-24 md:px-8">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-500">Start a conversation</p>
+          <motion.h1 initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="mb-5 text-4xl font-bold md:text-6xl">
+            Tell us what you want to build.
           </motion.h1>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            {contact.subtitle}
+          <p className="max-w-2xl text-muted-foreground">
+            Share a little about your business and project. We’ll review the details and get back to you using your preferred contact method.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <GlassCard className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">{contact.name}</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">{contact.email}</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">{contact.subject}</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">{contact.message}</label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-                <AnimatedButton type="submit" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? 'Sending...' : contact.send}
-                </AnimatedButton>
-                {status === 'success' && (
-                  <p className="text-green-400 text-sm">{contact.success}</p>
-                )}
-                {status === 'error' && (
-                  <p className="text-red-400 text-sm">{contact.error}</p>
-                )}
-              </form>
-            </GlassCard>
-          </motion.div>
+        <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_0.65fr]">
+          <GlassCard className="p-5 md:p-8">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div><label className={labelClass} htmlFor="name">Full name *</label><input id="name" name="name" value={formData.name} onChange={handleChange} className={inputClass} autoComplete="name" required /></div>
+                <div><label className={labelClass} htmlFor="email">Business email *</label><input id="email" name="email" type="email" value={formData.email} onChange={handleChange} className={inputClass} autoComplete="email" required /></div>
+                <div><label className={labelClass} htmlFor="phone">Phone / WhatsApp *</label><input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} className={inputClass} autoComplete="tel" required /></div>
+                <div><label className={labelClass} htmlFor="company">Company name</label><input id="company" name="company" value={formData.company} onChange={handleChange} className={inputClass} autoComplete="organization" /></div>
+                <div><label className={labelClass} htmlFor="service">Service required *</label><select id="service" name="service" value={formData.service} onChange={handleChange} className={inputClass} required><option value="">Select a service</option>{formData.service && !['Website Development','E-commerce Development','Custom Software','Mobile App Development','ERP / CRM','AI Chatbot / Automation','API Integration','SEO / Digital Marketing','UI/UX Design','Maintenance & Support','Other'].includes(formData.service) && <option value={formData.service}>{formData.service}</option>}{['Website Development' ,'E-commerce Development','Custom Software','Mobile App Development','ERP / CRM','AI Chatbot / Automation','API Integration','SEO / Digital Marketing','UI/UX Design','Maintenance & Support','Other'].map((item) => <option key={item}>{item}</option>)}</select></div>
+                <div><label className={labelClass} htmlFor="budget">Estimated project budget</label><select id="budget" name="budget" value={formData.budget} onChange={handleChange} className={inputClass}><option value="">Choose a range</option>{['Below ₹25,000','₹25,000–₹50,000','₹50,000–₹1,00,000','₹1,00,000–₹3,00,000','₹3,00,000+','Need guidance'].map((item) => <option key={item}>{item}</option>)}</select></div>
+              </div>
+              <div><label className={labelClass} htmlFor="message">Project description *</label><textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className={inputClass} placeholder="What are you trying to build? Include key features, users, or any reference links." required /></div>
+              <div><label className={labelClass} htmlFor="preferredContact">Preferred contact method</label><select id="preferredContact" name="preferredContact" value={formData.preferredContact} onChange={handleChange} className={inputClass}><option>WhatsApp</option><option>Phone call</option><option>Email</option></select></div>
+              <AnimatedButton type="submit" disabled={isSubmitting} className="w-full">
+                {isSubmitting ? 'Sending enquiry…' : 'Send project enquiry'}
+              </AnimatedButton>
+              {status === 'success' && <p role="status" className="text-sm text-green-500">Your enquiry has been sent. Thank you — we’ll be in touch.</p>}
+              {status === 'error' && <p role="alert" className="text-sm text-red-500">We couldn’t send your enquiry. Please try again or contact us directly by WhatsApp or email.</p>}
+              <p className="text-xs text-muted-foreground">Your details are used to respond to this project enquiry. Please do not include passwords or sensitive personal information.</p>
+            </form>
+          </GlassCard>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
-            <GlassCard className="p-6">
-              <div className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-cyan-400" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
-                  <p>
-                    <a href="mailto:hello.mirextech@gmail.com" className="hover:text-cyan-400 transition-colors">
-                      hello.mirextech@gmail.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-            <GlassCard className="p-6">
-              <div className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-violet-400" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
-                  <p>
-                    <a href="tel:+919336176580" className="hover:text-violet-400 transition-colors">
-                      +91 9336176580
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-            <GlassCard className="p-6">
-              <div className="flex items-center gap-4">
-                <MapPin className="w-6 h-6 text-pink-400" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Address</p>
-                  <p>Kanpur, Uttar Pradesh, India</p>
-                </div>
-              </div>
-            </GlassCard>
-            <GlassCard className="p-6">
-              <h3 className="font-semibold mb-2">Book a Free Consultation</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Schedule a call with our team to discuss your project.
-              </p>
-              <a href="tel:+916389709762" className="block">
-                <AnimatedButton variant="outline" className="w-full">
-                  {contact.meeting}
-                </AnimatedButton>
-              </a>
-            </GlassCard>
-          </motion.div>
+          <div className="space-y-4">
+            <GlassCard className="p-6"><div className="flex items-start gap-4"><Mail className="mt-1 h-5 w-5 text-cyan-500" /><div><p className="font-semibold">Email</p><a className="text-sm text-muted-foreground" href="mailto:hello.mirextech@gmail.com">hello.mirextech@gmail.com</a></div></div></GlassCard>
+            <GlassCard className="p-6"><div className="flex items-start gap-4"><Phone className="mt-1 h-5 w-5 text-cyan-500" /><div><p className="font-semibold">Phone</p><a className="text-sm text-muted-foreground" href="tel:+919336176580">+91 9336176580</a></div></div></GlassCard>
+            <GlassCard className="p-6"><div className="flex items-start gap-4"><MapPin className="mt-1 h-5 w-5 text-cyan-500" /><div><p className="font-semibold">Location</p><p className="text-sm text-muted-foreground">Kanpur, Uttar Pradesh, India</p></div></div></GlassCard>
+            <GlassCard className="p-6"><div className="flex items-start gap-4"><MessageCircle className="mt-1 h-5 w-5 text-green-500" /><div><p className="font-semibold">Prefer WhatsApp?</p><p className="mb-3 text-sm text-muted-foreground">Message us directly to discuss your requirements.</p><a className="text-sm font-semibold text-green-500" href="https://wa.me/919336176580?text=Hello%20MirexTech%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a></div></div></GlassCard>
+          </div>
         </div>
       </section>
     </>
