@@ -32,9 +32,13 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0 group">
-          <span className="text-2xl font-bold gradient-text">MirexTech</span>
-          <span className="text-xs font-light text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">✦</span>
+        <Link to="/" aria-label="MirexTech home" className="flex items-center shrink-0 group">
+          <img
+            src="/mirextech-neon-orbit-logo.png"
+            alt="MirexTech"
+            className="h-11 w-auto max-w-[190px] object-contain transition-transform duration-300 group-hover:scale-[1.03] md:h-12 md:max-w-[210px]"
+            fetchPriority="high"
+          />
         </Link>
 
         {/* Desktop Nav */}

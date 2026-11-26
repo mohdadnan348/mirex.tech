@@ -13,6 +13,9 @@ export interface Project {
   solution: string;
   result: string;
   screenshots: string[];
+  category: string;
+  status: string;
+  statusLabel: string;
 }
 
 export const projects: Project[] = [
@@ -30,6 +33,9 @@ export const projects: Project[] = [
     problem: "Job seekers struggled to optimize their resumes for Applicant Tracking Systems (ATS), leading to high rejection rates prior to human HR screenings. Existing solutions lacked actionable recommendations and project ideas to bridge skills gaps.",
     solution: "We engineered an automated evaluation engine using DeepSeek LLM capabilities integrated through Node.js. Next.js was chosen for rapid hydration, providing real-time scanning. The system parses PDF uploads, scores compatibility against specific JDs, highlights keyword deficiencies, and utilizes custom prompts to propose concrete projects.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "AI & Automation",
+    status: "Portfolio project",
+    statusLabel: "Independent build",
     screenshots: [
       "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=450&fit=crop",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop"
@@ -49,6 +55,9 @@ export const projects: Project[] = [
     problem: "The client needed an intuitive, fast shipment dashboard interface to manage cargo and track logistics partners. Their existing UI was outdated, non-responsive, and led to booking drops.",
     solution: "Created a high-fidelity logistics client portal with search filtering, cargo tracking steps, interactive maps, and shipment metrics. Fully built with React.js and Tailwind CSS for rapid navigation, featuring EmailJS workflows for real-time dispatch receipts.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "Web Development",
+    status: "Live link available",
+    statusLabel: "Website",
     screenshots: [
       "https://images.unsplash.com/photo-1606964212858-c215029db704?w=800&h=450&fit=crop",
       "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?w=800&h=450&fit=crop"
@@ -68,6 +77,9 @@ export const projects: Project[] = [
     problem: "Aylish Salon faced high booking overhead, client cancellations, and had no automated notification system to alert users about appointment approvals or timings.",
     solution: "Developed a full-stack salon system featuring visual scheduling slots. We added a custom Node/Express backend paired with MongoDB. Implemented a notification engine using EmailJS and direct WhatsApp API linking to instantly ping customers upon admin approval.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "Custom Software",
+    status: "Portfolio project",
+    statusLabel: "Full-stack project",
     screenshots: [
       "https://i.pinimg.com/1200x/c2/cf/69/c2cf69d4eccc8689fe719fb2b3692095.jpg",
       "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=450&fit=crop"
@@ -87,6 +99,9 @@ export const projects: Project[] = [
     problem: "Kheth Spices wanted to enter the online retail market with a visually arresting eCommerce landing page showing catalog items and enabling bulk inquiry request drops.",
     solution: "Crafted a beautiful grid showcase capturing organic farm spices. Built with highly-responsive components in React and styled with deep warm brand tones in Tailwind. Integrates custom inquiry forms routing to the client email inbox via EmailJS.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "E-commerce",
+    status: "Live link available",
+    statusLabel: "Website",
     screenshots: [
       "https://t4.ftcdn.net/jpg/01/86/45/63/360_F_186456306_crFfy6WlvrBmJkqzJCpmDP9CGjSvUAHx.jpg",
       "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=450&fit=crop"
@@ -106,6 +121,9 @@ export const projects: Project[] = [
     problem: "Schools struggled with fragmented administrative systems, tracking fees manually on spreadsheets, and communicating with parents about child attendance and results.",
     solution: "Designed a multi-role React Native mobile application for Android/iOS. Created separate visual dashboard screens for Faculty, Parents, and Admins. Features a secure JWT auth flow, automated monthly fee tracking ledgers, and real-time attendance markings.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "Mobile Apps",
+    status: "Internship project",
+    statusLabel: "Internship",
     screenshots: [
       "https://www.shutterstock.com/image-photo/businessman-erp-software-enterprise-resource-260nw-2370541891.jpg",
       "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=450&fit=crop"
@@ -125,6 +143,9 @@ export const projects: Project[] = [
     problem: "B2B clothing wholesale orders were done via phone calls, causing order errors, inventory mismatches, and delayed delivery tracking.",
     solution: "Built a robust cross-platform mobile B2B marketplace allowing buyers to place bulk orders, sellers to list products, and admins to oversee transactions. Integrates Cloudinary for batch product image uploads, and Mongo change streams for live inventory sync.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "Mobile Apps",
+    status: "Internship project",
+    statusLabel: "Internship",
     screenshots: [
       "https://imageio.forbes.com/specials-images/imageserve/5e0e4024ab5be6000762d078/0x0.jpg?format=jpg&crop=595,335,x0,y33,safe&height=900&width=1600&fit=bounds",
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=450&fit=crop"
@@ -144,6 +165,9 @@ export const projects: Project[] = [
     problem: "A local premium carpentry and furniture store lacked online visibility, causing potential clients to choose franchised outlets. They needed local search engine optimization to capture interior design leads.",
     solution: "Engineered a fast, server-side rendered website using Next.js with semantic HTML. Added localized schema markup for local SEO rankings. Structured a clean image project gallery displaying past home interior works with direct WhatsApp booking hooks.",
     result: "Project scope and implementation are documented here. Verified business outcome metrics were not supplied.",
+    category: "Web Development",
+    status: "Live link available",
+    statusLabel: "Website",
     screenshots: [
       "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?fm=jpg&q=60&w=3000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=450&fit=crop"
@@ -164,6 +188,9 @@ export const projects: Project[] = [
     problem: "School administration requires connected academic and administrative workflows with access appropriate to different user roles.",
     solution: "Developed a multi-role school ERP with role-based dashboards, backend APIs, database architecture, and authentication and authorization.",
     result: "Development completed; testing and bug fixing remain pending.",
+    category: "Custom Software",
+    status: "Testing & bug fixing pending",
+    statusLabel: "QA pending",
     screenshots: ["https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&h=675&fit=crop"]
   },
   {
@@ -180,6 +207,9 @@ export const projects: Project[] = [
     problem: "Solar businesses need a connected system to manage enquiries, quotations, invoicing and employee workflows.",
     solution: "Implemented frontend, backend, database and REST APIs for lead management, quotations, invoices, tasks, attendance and leave workflows.",
     result: "Development completed; deployment to the client domain is pending.",
+    category: "Custom Software",
+    status: "Client-domain deployment pending",
+    statusLabel: "Deployment pending",
     screenshots: ["https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=675&fit=crop"]
   }
 ];

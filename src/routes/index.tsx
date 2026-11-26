@@ -5,6 +5,8 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
 import ServicesDetail from "@/pages/ServicesDetail";
+import Industries from "@/pages/Industries";
+import IndustryDetail from "@/pages/IndustryDetail";
 import Projects from "@/pages/Projects";
 import ProjectDetail from "@/pages/ProjectDetail";
 import CRM from "@/pages/CRM";
@@ -27,6 +29,8 @@ export default function AppRoutes() {
 
         <Route path="services" element={<Services />} />
         <Route path="services/:slug" element={<ServicesDetail />} />
+        <Route path="industries" element={<Industries />} />
+        <Route path="industries/:slug" element={<IndustryDetail />} />
 
         <Route path="projects" element={<Projects />} />
         <Route path="projects/:slug" element={<ProjectDetail />} />
