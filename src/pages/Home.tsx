@@ -4,9 +4,9 @@ import Hero from "@/sections/Hero";
 import TrustedTechnologies from "@/sections/TrustedTechnologies";
 import ServicesSection from "@/sections/ServicesSection";
 import WhyChoose from "@/sections/WhyChoose";
-import Statistics from "@/sections/Statistics";
 import Process from "@/sections/Process";
 import FeaturedProjects from "@/sections/FeaturedProjects";
+import IndustriesSection from "@/sections/IndustriesSection";
 
 import CRMHero from "@/sections/CRMHero";
 
@@ -32,31 +32,17 @@ export default function Home() {
       </Helmet>
 
       <div className={styles.home}>
-        {/* Main Website Sections */}
         <Hero />
-
         <TrustedTechnologies />
-
         <ServicesSection />
-
-        <WhyChoose />
-
-        <Statistics />
-
-        <Process />
-
         <FeaturedProjects />
-
-        {/* CRM Highlight */}
+        <IndustriesSection />
+        <WhyChoose />
+        <Process />
         <CRMHero />
-
-        {/* Pricing */}
         <PricingSection />
-
         <TestimonialsSection />
-
         <FAQSection />
-
         <ContactCTA />
       </div>
     </>

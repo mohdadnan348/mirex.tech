@@ -1,99 +1,61 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { ArrowRight, Code2, Smartphone, Workflow, Sparkles } from 'lucide-react';
 import { AnimatedButton } from '@/components/ui/AnimatedButton';
-import { OrbAnimation } from '@/components/animations/OrbAnimation';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { texts } from '@/data/translationData';
+
+const capabilities = [
+  { icon: Code2, label: 'Web platforms' },
+  { icon: Smartphone, label: 'Mobile apps' },
+  { icon: Workflow, label: 'Business software' },
+];
 
 export default function Hero() {
-  const { hero } = texts;
-  const [orbSize, setOrbSize] = useState(380);
-
-  useEffect(() => {
-    const updateOrbSize = () => {
-      const width = window.innerWidth;
-      if (width < 480) setOrbSize(180);
-      else if (width < 640) setOrbSize(240);
-      else if (width < 768) setOrbSize(280);
-      else setOrbSize(380);
-    };
-
-    updateOrbSize();
-    window.addEventListener('resize', updateOrbSize);
-    return () => window.removeEventListener('resize', updateOrbSize);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
-      {/* Background Orbs – Lightweight version */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full bg-cyan-500/5 blur-3xl" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full bg-violet-500/5 blur-3xl" />
+    <section className="relative isolate flex min-h-[680px] items-center overflow-hidden px-4 pb-16 pt-28 md:min-h-[760px] md:pt-32">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-32 top-12 h-80 w-80 rounded-full bg-cyan-400/10 blur-[110px]" />
+        <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-violet-500/10 blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.12)_1px,transparent_0)] [background-size:28px_28px] opacity-40" />
       </div>
-
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-16 items-center relative z-10 w-full">
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center lg:text-left"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-cyan-400/20 mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs font-medium text-cyan-400 tracking-wider uppercase">
-              Technology partner for growing businesses
-            </span>
-          </motion.div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
-            <span className="gradient-text">
-              {hero.title}
-            </span>
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+            <Sparkles className="h-4 w-4" /> Technology partner for growing businesses
+          </div>
+          <h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl xl:text-7xl">
+            We Build <span className="gradient-text">Digital Solutions</span> That Grow Your Business.
           </h1>
-
-          <p className="mt-4 md:mt-6 text-base md:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            We design and develop websites, custom software, mobile applications, ERP/CRM platforms and AI-powered workflows that help businesses work smarter.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg lg:mx-0">
+            From high-performing websites and mobile apps to custom CRM, ERP and AI-powered workflows, we turn business challenges into practical digital products.
           </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8 md:mt-10"
-          >
-            <Link to="/contact">
-              <AnimatedButton size="lg" variant="premium">
-                {hero.ctaConsultation}
-                <ArrowRight className="w-4 h-4" />
-              </AnimatedButton>
-            </Link>
-            <Link to="/projects">
-              <AnimatedButton size="lg" variant="outline">
-                {hero.ctaPortfolio}
-              </AnimatedButton>
-            </Link>
-          </motion.div>
-
-          <p className="mt-7 text-sm text-muted-foreground">
-            Web platforms · Business software · Mobile apps · AI automation
-          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+            <Link to="/contact"><AnimatedButton size="lg" variant="premium">Discuss Your Project <ArrowRight className="h-4 w-4" /></AnimatedButton></Link>
+            <Link to="/projects"><AnimatedButton size="lg" variant="outline">Explore Our Work</AnimatedButton></Link>
+          </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground lg:justify-start">
+            {capabilities.map(({ icon: Icon, label }) => <span key={label} className="inline-flex items-center gap-2"><Icon className="h-4 w-4 text-cyan-400" />{label}</span>)}
+          </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-          className="flex justify-center lg:justify-end mt-8 lg:mt-0"
-        >
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-violet-500/20 rounded-full blur-3xl" />
-            <OrbAnimation size={orbSize} className="neon-glow relative" />
+        <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.15 }} className="relative mx-auto w-full max-w-[560px]">
+          <div className="absolute inset-8 rounded-[2.5rem] bg-gradient-to-br from-cyan-400/20 to-violet-500/20 blur-3xl" />
+          <div className="relative rounded-[2rem] border border-white/10 bg-slate-950/70 p-4 shadow-2xl shadow-cyan-950/30 backdrop-blur-xl sm:p-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-rose-400"/><span className="h-2.5 w-2.5 rounded-full bg-amber-300"/><span className="h-2.5 w-2.5 rounded-full bg-emerald-400"/></div>
+              <span className="text-xs tracking-wide text-slate-400">MIREXTECH / DIGITAL WORKSPACE</span>
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            </div>
+            <div className="grid grid-cols-2 gap-3 py-5">
+              <div className="col-span-2 rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-blue-500/5 p-5">
+                <p className="text-xs font-medium uppercase tracking-widest text-cyan-300">Build • Integrate • Grow</p>
+                <p className="mt-3 text-2xl font-semibold text-white sm:text-3xl">One partner. <span className="text-cyan-300">Endless possibilities.</span></p>
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full w-3/4 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400" /></div>
+              </div>
+              {[{ title: 'Web Development', value: 'Modern websites', icon: Code2 }, { title: 'Business Systems', value: 'CRM & ERP', icon: Workflow }, { title: 'Mobile Apps', value: 'iOS & Android', icon: Smartphone }, { title: 'AI Integration', value: 'Smarter workflows', icon: Sparkles }].map(({ title, value, icon: Icon }) => (
+                <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4"><Icon className="h-5 w-5 text-violet-300"/><p className="mt-4 text-sm font-semibold text-white">{title}</p><p className="mt-1 text-xs text-slate-400">{value}</p></div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"><span className="text-xs text-slate-400">Your next idea starts here</span><span className="text-xs font-semibold text-cyan-300">Let's build it <ArrowRight className="ml-1 inline h-3 w-3"/></span></div>
           </div>
         </motion.div>
       </div>
