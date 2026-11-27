@@ -1,4 +1,10 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://mirextech.in/sitemap.xml
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.ts"]
+}
