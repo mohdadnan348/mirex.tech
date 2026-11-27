@@ -1,6 +1,44 @@
-export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
+# Dependencies
+node_modules/
+.pnpm-store/
+yarn-error.log
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.parcel-cache/
+.vite/
+.eslintcache
+
+# Coverage
+coverage/
+
+# Misc
+*.pem
+*.key
+*.cert
+.vercel/
