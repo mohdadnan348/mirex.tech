@@ -4,7 +4,7 @@ import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { projects } from '@/data/projectsData';
 import { AnimatedButton } from '@/components/ui/AnimatedButton';
 
-const featuredSlugs = ['gujarat-solar-crm', 'resume-ai', 'proshipstar'];
+const featuredSlugs = ['mirexsolar', 'resume-ai', 'proshipstar'];
 const featured = featuredSlugs.map(slug => projects.find(project => project.slug === slug)).filter((project): project is (typeof projects)[number] => Boolean(project));
 
 export default function FeaturedProjects() {

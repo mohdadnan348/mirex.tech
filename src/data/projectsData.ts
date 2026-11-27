@@ -195,8 +195,8 @@ export const projects: Project[] = [
   },
   {
     id: 9,
-    slug: "gujarat-solar-crm",
-    title: "Gujarat Solar Energy – Solar CRM",
+    slug: "mirexsolar",
+    title: "MirexSolar – Solar Business CRM",
     description: "Solar business management CRM covering leads, quotations, invoices, tasks, attendance and leave workflows.",
     techTags: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB"],
     imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=520&fit=crop",

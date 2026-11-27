@@ -8,6 +8,7 @@ import { ScrollProgress } from './components/ui/ScrollProgress';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { FloatingWhatsApp } from './components/ui/FloatingWhatsApp';
 import { CookieConsent } from './components/ui/CookieConsent';
+import { Analytics } from './components/analytics/Analytics';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <AppRoutes />
           <FloatingWhatsApp />
           <CookieConsent />
+          <Analytics />
         </BrowserRouter>
       </ThemeProvider>
     </HelmetProvider>

@@ -25,7 +25,7 @@ export default function PricingSection() {
                   {plan.inclusions.map((feature) => <li key={feature} className="flex items-start gap-2 text-sm"><Check className="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" /><span>{feature}</span></li>)}
                 </ul>
                 <p className="mt-5 text-xs text-muted-foreground">{plan.note}</p>
-                <Link to={`/contact?service=${encodeURIComponent(plan.name)}`} className="mt-6">
+                <Link to={`/contact?service=${encodeURIComponent(plan.name)}&budget=Need%20guidance`} className="mt-6">
                   <AnimatedButton className="w-full">Get a custom quote</AnimatedButton>
                 </Link>
               </GlassCard>

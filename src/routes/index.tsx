@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout";
 
 import Home from "@/pages/Home";
@@ -33,6 +33,7 @@ export default function AppRoutes() {
         <Route path="industries/:slug" element={<IndustryDetail />} />
 
         <Route path="projects" element={<Projects />} />
+        <Route path="projects/gujarat-solar-crm" element={<Navigate to="/projects/mirexsolar" replace />} />
         <Route path="projects/:slug" element={<ProjectDetail />} />
 
         {/* CRM */}

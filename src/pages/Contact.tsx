@@ -8,9 +8,13 @@ import emailjs from 'emailjs-com';
 
 type FormStatus = 'idle' | 'success' | 'error';
 
+const contactParams = new URLSearchParams(window.location.search);
 const initialForm = {
-  name: '', email: '', phone: '', company: '', service: new URLSearchParams(window.location.search).get('service') || '',
-  budget: '', message: '', preferredContact: 'WhatsApp',
+  name: '', email: '', phone: '', company: '',
+  service: contactParams.get('service') || '',
+  budget: contactParams.get('budget') || '',
+  message: contactParams.get('message') || '',
+  preferredContact: 'WhatsApp',
 };
 
 const inputClass = 'w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:ring-2 focus:ring-cyan-500';
@@ -20,6 +24,7 @@ export default function Contact() {
   const [formData, setFormData] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [website, setWebsite] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((current) => ({ ...current, [e.target.name]: e.target.value }));
@@ -28,6 +33,11 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (website) return;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) || formData.phone.replace(/\D/g, '').length < 10) {
+      setStatus('error');
+      return;
+    }
     setIsSubmitting(true);
     setStatus('idle');
 
@@ -36,8 +46,15 @@ export default function Contact() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setStatus('error');
+      const subject = encodeURIComponent(`Project enquiry – ${formData.service || 'MirexTech'}`);
+      const body = encodeURIComponent([
+        `Name: ${formData.name}`, `Email: ${formData.email}`, `Phone: ${formData.phone}`,
+        `Company: ${formData.company}`, `Service: ${formData.service}`, `Budget: ${formData.budget}`,
+        `Preferred contact: ${formData.preferredContact}`, '', formData.message,
+      ].join('\\n'));
+      window.location.href = `mailto:hello.mirextech@gmail.com?subject=${subject}&body=${body}`;
       setIsSubmitting(false);
+      setStatus('success');
       return;
     }
 
@@ -84,6 +101,10 @@ export default function Contact() {
         <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_0.65fr]">
           <GlassCard className="p-5 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-5">
+              <div aria-hidden="true" className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="website">Leave this field empty</label>
+                <input id="website" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
+              </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div><label className={labelClass} htmlFor="name">Full name *</label><input id="name" name="name" value={formData.name} onChange={handleChange} className={inputClass} autoComplete="name" required /></div>
                 <div><label className={labelClass} htmlFor="email">Business email *</label><input id="email" name="email" type="email" value={formData.email} onChange={handleChange} className={inputClass} autoComplete="email" required /></div>
@@ -97,7 +118,7 @@ export default function Contact() {
               <AnimatedButton type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting ? 'Sending enquiry…' : 'Send project enquiry'}
               </AnimatedButton>
-              {status === 'success' && <p role="status" className="text-sm text-green-500">Your enquiry has been sent. Thank you — we’ll be in touch.</p>}
+              {status === 'success' && <p role="status" className="text-sm text-green-500">Your enquiry is ready. If your email app opened, please send the prefilled message. Thank you.</p>}
               {status === 'error' && <p role="alert" className="text-sm text-red-500">We couldn’t send your enquiry. Please try again or contact us directly by WhatsApp or email.</p>}
               <p className="text-xs text-muted-foreground">Your details are used to respond to this project enquiry. Please do not include passwords or sensitive personal information.</p>
             </form>

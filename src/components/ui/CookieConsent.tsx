@@ -12,6 +12,7 @@ export function CookieConsent() {
 
   const accept = () => {
     localStorage.setItem('cookieConsent', 'accepted');
+    window.dispatchEvent(new Event('mirex-cookie-consent'));
     setVisible(false);
   };
 
@@ -31,7 +32,7 @@ export function CookieConsent() {
         >
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              This site stores your consent choice locally. Optional analytics cookies are not currently enabled.
+              We use essential site storage. Optional analytics are only loaded if configured and you accept.
             </p>
             <div className="flex gap-3">
               <AnimatedButton variant="outline" size="sm" onClick={decline}>

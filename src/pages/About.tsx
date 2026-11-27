@@ -1,77 +1,119 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { industries } from '@/data/industriesData';
-import * as LucideIcons from 'lucide-react';
+import {
+  Target, Eye, Lightbulb, Users, ShieldCheck, Code2, Workflow,
+  MessageSquareText, ClipboardCheck, PanelsTopLeft, Rocket, Headphones,
+  ArrowRight, CheckCircle2
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import styles from './About.module.css';
+
+const capabilities = [
+  { icon: Code2, title: 'Web & Mobile Development', text: 'Responsive websites, web applications and cross-platform mobile experiences.' },
+  { icon: Workflow, title: 'Custom Business Software', text: 'CRM, ERP and workflow tools shaped around real operational requirements.' },
+  { icon: Lightbulb, title: 'AI & Automation', text: 'Practical AI integrations and automation that support everyday business tasks.' },
+  { icon: PanelsTopLeft, title: 'Product UI & Experience', text: 'Clear interfaces that make complex workflows easier for teams to use.' },
+];
+
+const process = [
+  { icon: MessageSquareText, step: '01', title: 'Understand', text: 'Discuss business goals, users, current processes and the problem to solve.' },
+  { icon: ClipboardCheck, step: '02', title: 'Plan', text: 'Agree on scope, features, priorities, milestones and a practical delivery plan.' },
+  { icon: PanelsTopLeft, step: '03', title: 'Design & Build', text: 'Shape the experience, implement the solution and review progress in stages.' },
+  { icon: CheckCircle2, step: '04', title: 'Test & Refine', text: 'Validate key workflows, fix issues and prepare the product for handover.' },
+  { icon: Rocket, step: '05', title: 'Launch', text: 'Deploy the agreed solution and help the team get started.' },
+  { icon: Headphones, step: '06', title: 'Support', text: 'Discuss improvements and future enhancements as business needs evolve.' },
+];
 
 export default function About() {
-  const getIcon = (name: string) => {
-    const Icon = (LucideIcons as any)[name];
-    return Icon ? <Icon className="w-8 h-8 text-cyan-400" /> : null;
-  };
-
   return (
-    <>
+    <main className={styles.page}>
       <Helmet>
-        <title>About MirexTech | Technology Partner for Businesses</title>
-        <meta name="description" content="Learn how MirexTech plans and develops websites, custom software, ERP/CRM systems, mobile apps and business automation." />
+        <title>About MirexTech | Mission, Vision & Capabilities</title>
+        <meta name="description" content="Discover MirexTech's mission, vision, software capabilities and collaborative development process for business websites, applications and custom software." />
         <link rel="canonical" href="https://mirextech.in/about" />
       </Helmet>
-      <section className="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
-            About MirexTech
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            MirexTech works with businesses to plan, design, and develop practical digital products — from business websites to custom software and workflow automation.
-          </p>
-        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-            <p className="text-muted-foreground">
-              To empower businesses with cutting-edge AI and software solutions that drive growth, efficiency, and innovation.
-              We combine technical excellence with creative design to deliver products that truly make a difference.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>✦ Innovation at every step</li>
-              <li>✦ Customer-centric approach</li>
-              <li>✦ Transparency and trust</li>
-              <li>✦ Quality and performance</li>
-            </ul>
-          </motion.div>
-        </div>
-
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Industries We Serve</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {industries.map((industry, idx) => (
-              <GlassCard key={idx} className="text-center p-4">
-                <div className="flex justify-center mb-2">{getIcon(industry.iconName)}</div>
-                <h3 className="font-semibold">{industry.name}</h3>
-                <p className="text-xs text-muted-foreground mt-1">{industry.description}</p>
-              </GlassCard>
-            ))}
-          </div>
+      <section className={styles.hero}>
+        <span className={styles.eyebrow}>ABOUT MIREXTECH</span>
+        <h1>Technology built around <span>your business.</span></h1>
+        <p>We plan, design and develop digital products that help businesses improve their workflows, serve customers and move forward with confidence.</p>
+        <div className={styles.heroActions}>
+          <Link to="/contact" className={styles.primaryButton}>Discuss your project <ArrowRight size={17} /></Link>
+          <Link to="/projects" className={styles.secondaryButton}>Explore our work</Link>
         </div>
       </section>
-    </>
+
+      <section className={styles.introGrid}>
+        <article className={styles.statementCard}>
+          <div className={styles.iconBubble}><Target /></div>
+          <p className={styles.kicker}>OUR MISSION</p>
+          <h2>Make useful technology accessible to businesses.</h2>
+          <p>Our mission is to turn business needs into dependable digital solutions through thoughtful planning, practical engineering and clear communication.</p>
+        </article>
+        <article className={styles.statementCard}>
+          <div className={styles.iconBubble}><Eye /></div>
+          <p className={styles.kicker}>OUR VISION</p>
+          <h2>Be a trusted technology partner for growth.</h2>
+          <p>Our vision is to help businesses confidently adopt digital tools that can evolve with their teams, customers and changing requirements.</p>
+        </article>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeading}>
+          <span className={styles.eyebrow}>WHAT WE BRING</span>
+          <h2>Capabilities for your next digital step</h2>
+          <p>From a focused website to a connected business platform, we bring product thinking and software development together.</p>
+        </div>
+        <div className={styles.capabilityGrid}>
+          {capabilities.map(({ icon: Icon, title, text }) => (
+            <article className={styles.capabilityCard} key={title}>
+              <div className={styles.iconBubble}><Icon /></div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.valuesBand}>
+        <div>
+          <span className={styles.eyebrow}>HOW WE WORK</span>
+          <h2>Good collaboration makes better software.</h2>
+          <p>We value clear expectations, useful feedback and decisions grounded in the project’s actual needs.</p>
+        </div>
+        <ul>
+          <li><ShieldCheck /> Transparent communication</li>
+          <li><Users /> Customer-focused decisions</li>
+          <li><CheckCircle2 /> Quality-minded delivery</li>
+          <li><Lightbulb /> Continuous improvement</li>
+        </ul>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeading}>
+          <span className={styles.eyebrow}>OUR PROCESS</span>
+          <h2>From first conversation to launch</h2>
+          <p>A collaborative process with clear stages and room for feedback.</p>
+        </div>
+        <div className={styles.processGrid}>
+          {process.map(({ icon: Icon, step, title, text }) => (
+            <article className={styles.processCard} key={step}>
+              <div className={styles.processTop}><span>{step}</span><Icon /></div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.cta}>
+        <div>
+          <span className={styles.eyebrow}>LET’S BUILD SOMETHING USEFUL</span>
+          <h2>Have a business challenge in mind?</h2>
+          <p>Tell us what you want to improve. We can discuss the right next step together.</p>
+        </div>
+        <Link to="/contact" className={styles.primaryButton}>Start a conversation <ArrowRight size={17} /></Link>
+      </section>
+    </main>
   );
 }
