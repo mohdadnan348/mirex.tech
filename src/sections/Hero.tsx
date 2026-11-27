@@ -26,7 +26,7 @@ export default function Hero() {
             We Build <span className="gradient-text">Digital Solutions</span> That Grow Your Business.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg lg:mx-0">
-            From high-performing websites and mobile apps to custom CRM, ERP and AI-powered workflows, we turn business challenges into practical digital products.
+            MirexTech is a Kanpur-based software development company building business websites, eCommerce platforms, mobile apps, custom CRM/ERP systems and AI-powered workflows for businesses across India.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
             <Link to="/contact"><AnimatedButton size="lg" variant="premium">Discuss Your Project <ArrowRight className="h-4 w-4" /></AnimatedButton></Link>

@@ -8,7 +8,7 @@ export default function Pricing() {
   return (
     <>
       <Helmet>
-        <title>Pricing – MirexTech</title>
+        <title>Website & Custom Software Development Pricing | MirexTech</title>
 
         <meta
           name="description"

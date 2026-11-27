@@ -28,7 +28,7 @@ export default function About() {
   return (
     <main className={styles.page}>
       <Helmet>
-        <title>About MirexTech | Mission, Vision & Capabilities</title>
+        <title>About MirexTech | Software Development Company in Kanpur</title>
         <meta name="description" content="Discover MirexTech's mission, vision, software capabilities and collaborative development process for business websites, applications and custom software." />
         <link rel="canonical" href="https://mirextech.in/about" />
       </Helmet>

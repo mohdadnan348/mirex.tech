@@ -31,8 +31,8 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Our Projects & Portfolio | MirexTech</title>
-        <meta name="description" content="Explore MirexTech's web development, mobile app, AI, e-commerce and custom business software projects." />
+        <title>Software Development Portfolio & Projects | MirexTech</title>
+        <meta name="description" content="Explore MirexTech's selected website, mobile app, AI, eCommerce and custom business software projects." />
         <link rel="canonical" href="https://mirextech.in/projects" />
       </Helmet>
 

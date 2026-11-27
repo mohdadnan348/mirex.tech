@@ -15,8 +15,8 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>Software & Digital Services | MirexTech</title>
-        <meta name="description" content="Explore MirexTech website development, e-commerce, custom software, mobile apps, ERP/CRM, AI automation, API integration and digital services." />
+        <title>Website, App & Custom Software Development Services | MirexTech</title>
+        <meta name="description" content="Explore website development, eCommerce, mobile app development, custom software, CRM, ERP and AI automation services by MirexTech in Kanpur, India." />
         <link rel="canonical" href="https://mirextech.in/services" />
       </Helmet>
       <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto">

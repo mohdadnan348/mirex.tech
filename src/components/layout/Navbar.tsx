@@ -30,19 +30,19 @@ export function Navbar() {
           : 'bg-background border-b border-border'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16">
+      <div className="w-full max-w-[1440px] mx-auto px-4 lg:px-6 xl:px-8 flex items-center justify-between gap-4 min-h-16">
         {/* Logo */}
         <Link to="/" aria-label="MirexTech home" className="flex items-center shrink-0 group">
           <img
             src="/mirextech-neon-orbit-logo.png"
             alt="MirexTech"
-            className="h-11 w-auto max-w-[190px] object-contain transition-transform duration-300 group-hover:scale-[1.03] md:h-12 md:max-w-[210px]"
+            className="h-10 w-auto max-w-[156px] object-contain transition-transform duration-300 group-hover:scale-[1.03] lg:h-11 lg:max-w-[172px]"
             fetchPriority="high"
           />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden lg:flex flex-1 items-center justify-end gap-4 xl:gap-6 whitespace-nowrap">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -62,10 +62,10 @@ export function Navbar() {
               )}
             </Link>
           ))}
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 xl:gap-3">
             <ThemeToggle />
             <Link to="/contact">
-              <AnimatedButton size="sm" className="ml-2">
+              <AnimatedButton size="sm" className="ml-1 whitespace-nowrap">
                 Free Consultation
               </AnimatedButton>
             </Link>
@@ -74,7 +74,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
+          className="lg:hidden shrink-0 p-2 rounded-lg hover:bg-accent transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
@@ -93,7 +93,7 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             id="mobile-navigation"
-            className="md:hidden border-b border-border bg-background"
+            className="lg:hidden border-b border-border bg-background"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (

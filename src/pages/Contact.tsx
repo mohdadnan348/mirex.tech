@@ -6,7 +6,7 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
 
-type FormStatus = 'idle' | 'success' | 'error';
+type FormStatus = 'idle' | 'success' | 'error' | 'fallback';
 
 const contactParams = new URLSearchParams(window.location.search);
 const initialForm = {
@@ -19,6 +19,31 @@ const initialForm = {
 
 const inputClass = 'w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:ring-2 focus:ring-cyan-500';
 const labelClass = 'mb-1.5 block text-sm font-medium';
+
+function buildWhatsApp(formData: typeof initialForm) {
+  const message = [
+    'Hello MirexTech, I would like to discuss a project.',
+    `Name: ${formData.name}`,
+    `Email: ${formData.email}`,
+    `Phone: ${formData.phone}`,
+    `Company: ${formData.company || 'Not provided'}`,
+    `Service: ${formData.service}`,
+    `Budget: ${formData.budget || 'Not specified'}`,
+    `Preferred contact: ${formData.preferredContact}`,
+    `Project details: ${formData.message}`,
+  ].join('\n');
+  return `https://wa.me/919336176580?text=${encodeURIComponent(message)}`;
+}
+
+function buildMailto(formData: typeof initialForm) {
+  const subject = encodeURIComponent(`Project enquiry – ${formData.service || 'MirexTech'}`);
+  const body = encodeURIComponent([
+    `Name: ${formData.name}`, `Email: ${formData.email}`, `Phone: ${formData.phone}`,
+    `Company: ${formData.company}`, `Service: ${formData.service}`, `Budget: ${formData.budget}`,
+    `Preferred contact: ${formData.preferredContact}`, '', formData.message,
+  ].join('\n'));
+  return `mailto:hello.mirextech@gmail.com?subject=${subject}&body=${body}`;
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState(initialForm);
@@ -41,39 +66,42 @@ export default function Contact() {
     setIsSubmitting(true);
     setStatus('idle');
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // EmailJS browser public key and service/template IDs are client-side identifiers.
+    // Environment variables can override these defaults in the hosting build settings.
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_d353yqa';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_m52knit';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'm5cyahMkW74k2v9wq';
 
     if (!serviceId || !templateId || !publicKey) {
-      const subject = encodeURIComponent(`Project enquiry – ${formData.service || 'MirexTech'}`);
-      const body = encodeURIComponent([
-        `Name: ${formData.name}`, `Email: ${formData.email}`, `Phone: ${formData.phone}`,
-        `Company: ${formData.company}`, `Service: ${formData.service}`, `Budget: ${formData.budget}`,
-        `Preferred contact: ${formData.preferredContact}`, '', formData.message,
-      ].join('\\n'));
-      window.location.href = `mailto:hello.mirextech@gmail.com?subject=${subject}&body=${body}`;
       setIsSubmitting(false);
-      setStatus('success');
+      setStatus('fallback');
       return;
     }
 
     try {
       await emailjs.send(serviceId, templateId, {
+        // Common EmailJS template variables plus clear aliases for custom templates.
         from_name: formData.name,
         from_email: formData.email,
+        user_name: formData.name,
+        user_email: formData.email,
+        name: formData.name,
+        email: formData.email,
         phone: formData.phone,
-        company: formData.company,
+        company: formData.company || 'Not provided',
         service: formData.service,
-        budget: formData.budget,
+        budget: formData.budget || 'Not specified',
         preferred_contact: formData.preferredContact,
-        subject: `New project enquiry${formData.company ? ` — ${formData.company}` : ''}`,
+        subject: `New MirexTech project enquiry${formData.company ? ` — ${formData.company}` : ''}`,
         message: formData.message,
         reply_to: formData.email,
+        to_email: 'hello.mirextech@gmail.com',
       }, publicKey);
       setStatus('success');
       setFormData(initialForm);
-    } catch {
+    } catch (error) {
+      // Keep the user-facing message simple; expose details in the browser console for debugging.
+      console.error('MirexTech contact form: EmailJS request failed.', error);
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -83,8 +111,8 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact MirexTech | Discuss Your Software Project</title>
-        <meta name="description" content="Talk to MirexTech about website development, custom software, ERP/CRM, mobile apps and AI automation. Share your project requirements and request a quotation." />
+        <title>Contact MirexTech | Get a Software Development Quote</title>
+        <meta name="description" content="Request a website, mobile app, CRM, ERP or custom software development quote from MirexTech in Kanpur, India." />
         <link rel="canonical" href="https://mirextech.in/contact" />
       </Helmet>
       <section className="mx-auto max-w-6xl px-4 py-24 md:px-8">
@@ -118,8 +146,27 @@ export default function Contact() {
               <AnimatedButton type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting ? 'Sending enquiry…' : 'Send project enquiry'}
               </AnimatedButton>
-              {status === 'success' && <p role="status" className="text-sm text-green-500">Your enquiry is ready. If your email app opened, please send the prefilled message. Thank you.</p>}
-              {status === 'error' && <p role="alert" className="text-sm text-red-500">We couldn’t send your enquiry. Please try again or contact us directly by WhatsApp or email.</p>}
+              {status === 'success' && <p role="status" className="text-sm text-green-500">Your enquiry was sent successfully. Thank you — we’ll be in touch.</p>}
+              {status === 'fallback' && (
+                <div role="status" className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm">
+                  <p className="font-semibold text-amber-500">Online form email is not configured yet.</p>
+                  <p className="mt-1 text-muted-foreground">Your details are ready. Choose email or WhatsApp below to send your enquiry directly.</p>
+                  <div className="mt-3 flex flex-wrap gap-4">
+                    <a className="inline-flex font-semibold text-cyan-500 underline underline-offset-4" href={buildMailto(formData)}>Open pre-filled email</a>
+                    <a className="inline-flex font-semibold text-green-500 underline underline-offset-4" href={buildWhatsApp(formData)} target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
+                  </div>
+                </div>
+              )}
+              {status === 'error' && (
+                <div role="alert" className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm">
+                  <p className="font-semibold text-red-500">We couldn’t send your enquiry through the online form.</p>
+                  <p className="mt-1 text-muted-foreground">Please use one of these direct options; your form details are included in the email link.</p>
+                  <div className="mt-3 flex flex-wrap gap-4">
+                    <a className="inline-flex font-semibold text-cyan-500 underline underline-offset-4" href={buildMailto(formData)}>Send by email instead</a>
+                    <a className="inline-flex font-semibold text-green-500 underline underline-offset-4" href={buildWhatsApp(formData)} target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>
+                  </div>
+                </div>
+              )}
               <p className="text-xs text-muted-foreground">Your details are used to respond to this project enquiry. Please do not include passwords or sensitive personal information.</p>
             </form>
           </GlassCard>
